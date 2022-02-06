@@ -1,9 +1,17 @@
-import { useState, useEffect } from "react"
+import React,{ useState, useEffect } from "react"
 
 const WeatherCard = () => {
-    return(
+
+
+
+    
+
+
+
+
+    return (
         <>
-        <h3>Weather Data</h3>
+            <h3>Weather Data</h3>
         </>
     )
 }
