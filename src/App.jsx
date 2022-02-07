@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import './App.css'
 import WeatherCard from './components/weather-card/weather-card.component';
+import AdviceCard from './components/advice-card/advice-card.component';
+import './App.css'
 
 function App() {
 
@@ -51,9 +53,15 @@ function App() {
 
     return (
         <>
-            <h2>App</h2>
-            <p>{advice}</p>
-            <WeatherCard weatherData={data} />
+            <h2 id='title'>kallisto</h2>
+
+            {
+                (typeof data.main != 'undefined') ?
+                    (<WeatherCard weatherData={data} />) :
+                    (<div></div>)
+            }
+
+            <AdviceCard adviceData={advice} />
         </>
     )
 }
