@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 const TasksContext = React.createContext()
 
- const TasksProvider = ({ children }) => {
+const TasksProvider = ({ children }) => {
 
     const [tasks, setTasks] = useLocalStorage('tasks', [])
 
@@ -17,41 +17,65 @@ const TasksContext = React.createContext()
     //     subtasks:[ {}]
     // }
 
-  
 
-    const addTask = ({title,priority,date}) => {
+    const addTask = ({ title, priority, date }) => {
         const newTask = {
-            taskId:uuidv4(),
-            taskTitle:title,
-            taskPriority:priority,
-            createdAt:date,
-            subtasks:[]
+            taskId: uuidv4(),
+            taskTitle: title,
+            taskPriority: priority,
+            createdAt: date,
+            subtasks: []
         }
-        
-        console.log("Mewly created task:",newTask)
+
+        console.log("Mewly created task:", newTask)
         setTasks(prevTasks => {
             return [...prevTasks, newTask]
         })
     }
 
-    const addSubTask = ({title,taskId,status}) => {
+    const addSubTask = ({ title, taskId, status }) => {
         const newSubTask = {
             subtaskId: uuidv4(),
-            subtaskTitle:title,
-            subtaskStatus:status
+            subtaskTitle: title,
+            subtaskStatus: status
         }
-        
-        tasks.map(task => {
-            if(task.taskId === taskId)
-            {
-                task.subTasks.push(newSubTask)
-            }
+
+        setTasks(prevTasks => {
+            return prevTasks.map(task => {
+                if (task.taskId === taskId) {
+                    task.subtasks.push(newSubTask)
+                }
+            })
         })
     }
 
+    const deleteTask = (taskId) => {
+        setTasks(prevTasks => {
+            return prevTasks.filter(task => task.taskId !== taskId)
+        })
+    }
+
+    const deleteSubTask = (taskId, subtaskId) => {
+        setTasks(prevTasks => {
+            return prevTasks.map(task => {
+                if (task.taskId === taskId) {
+                    task.subtasks.filter(subtask => subtask.subtaskId !== subtaskId)
+                }
+            })
+        })
+    }
+
+
+
+
+
     return (
         <TasksContext.Provider value={{
-            tasks
+            tasks,
+            addTask,
+            addSubTask,
+            deleteTask,
+            deleteSubTask
         }}>
             {children}
         </TasksContext.Provider>
