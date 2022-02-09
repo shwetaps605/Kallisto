@@ -4,6 +4,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 const TasksContext = React.createContext()
 
+export const useTasks = () => {
+    return useContext(TasksContext)
+}
+
 const TasksProvider = ({ children }) => {
 
     const [tasks, setTasks] = useLocalStorage('tasks', [])

@@ -2,12 +2,10 @@
  
  body {
      background-color: #514fc7;
+     font-family: 'Ubuntu', sans-serif;
 
  }
 
 #title {
     color: #fff;
-
-    font-family: 'Ubuntu', sans-serif;
-
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css'
 import WeatherCard from './components/weather-card/weather-card.component';
 import AdviceCard from './components/advice-card/advice-card.component';
+import TaskListCard from './components/task-list/task-list-card.component';
 import './App.css'
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
             }
 
             <AdviceCard adviceData={advice} />
+            <TaskListCard></TaskListCard>
         </>
     )
 }
