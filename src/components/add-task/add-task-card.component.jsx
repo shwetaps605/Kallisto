@@ -10,6 +10,9 @@ const AddTaskCard = (props) => {
     const priorityRef = useRef()
     const [date, setDate] = useState("")
 
+    const subtaskTitle = useRef()
+    const subtaskStatus = useRef()
+
     const { addTask } = useTasks()
 
     const handleSubmit = (e) => {
