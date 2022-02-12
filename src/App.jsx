@@ -4,6 +4,7 @@ import './App.css'
 import WeatherCard from './components/weather-card/weather-card.component';
 import AdviceCard from './components/advice-card/advice-card.component';
 import TaskListCard from './components/task-list/task-list-card.component';
+import Modal from './components/modal/modal.component';
 import './App.css'
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
     const [long, setLong] = useState([])
     const [data, setData] = useState([])
     const [advice, setAdvice] = useState("")
+    const [showModal, setShowModal] = useState(false)
+
 
     useEffect(() => {
         fetchData()
@@ -52,6 +55,10 @@ function App() {
             .catch(err => console.log(err))
     }
 
+    const showAddSubtaskModal = () => {
+        setShowModal(true)
+    }
+
     return (
         <>
             <h2 id='title'>kallisto</h2>
@@ -63,7 +70,8 @@ function App() {
             }
 
             <AdviceCard adviceData={advice} />
-            <TaskListCard></TaskListCard>
+            <TaskListCard onAddSubTask={showAddSubtaskModal}></TaskListCard>
+            <Modal showModal={showModal} onClose={() => setShowModal(false)}></Modal>
         </>
     )
 }

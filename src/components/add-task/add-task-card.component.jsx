@@ -23,9 +23,13 @@ const AddTaskCard = (props) => {
             priority:priorityRef.current.value,
             date:date
         })
+        titleRef.current.value= ""
+        priorityRef.current.value="Low"
+
     }
 
     return (
+        <>
         <div className="add__task__card__container">
             <h3>Add Task</h3>
             <form onSubmit={handleSubmit}> 
@@ -44,6 +48,8 @@ const AddTaskCard = (props) => {
                 <input type="submit" name="Add" id="add-task-button" value="Add"/>
             </form>
         </div>
+        </>
+        
     )
 }
 

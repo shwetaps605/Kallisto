@@ -3,9 +3,15 @@ import './task-list-card.styles.scss'
 import AddTaskCard from '../add-task/add-task-card.component'
 import { useTasks } from '../../contexts/TaskContexts'
 
+
 const TaskListCard = (props) => {
 
     const { tasks, deleteTask } = useTasks()
+
+
+    const handleAddSubTask = (taskId) => {
+        console.log(taskId);
+    }
 
 
     return (
@@ -18,6 +24,7 @@ const TaskListCard = (props) => {
                         <div className='task__item' key={task.taskId}>
                             <h3>{task.taskTitle}</h3>
                             <button onClick={() => deleteTask(task.taskId)}>Delete</button>
+                            <button onClick={props.onAddSubTask}>Add Subtask</button>
                         </div>
                     ))
                 }
