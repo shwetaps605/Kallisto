@@ -1,17 +1,26 @@
 .modal {
-    background-color: rgb(209, 106, 146);
-    border-radius: 10px;
-    color: #000;
     position: fixed;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+
+.modal__content {
+    opacity: 1;
     padding: 2rem;
     width: 500px;
     height: 200px;
+    color: #000;
+    background-color: rgb(209, 106, 146);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
