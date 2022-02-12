@@ -14,6 +14,7 @@ function App() {
     const [data, setData] = useState([])
     const [advice, setAdvice] = useState("")
     const [showModal, setShowModal] = useState(false)
+    const [taskId, setTaskId] = useState("")
 
 
     useEffect(() => {
