@@ -29,13 +29,7 @@ const Modal = (props) => {
                     <h2>{taskForSubtask.taskTitle}</h2>
                 </div>
                 <div className="modal__body">
-                    {
-                        taskForSubtask.subtasks.length > 0 ?
-                            taskForSubtask.subtasks.map(subtask => (
-                                <p>subtask.subtaskTitle</p>
-                            )) :
-                            <p>No subtasks!</p>
-                    }
+                                       
                 </div>
                 <div className="modal__footer">
                     <button>Add Subtask</button>
