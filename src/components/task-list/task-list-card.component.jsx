@@ -24,7 +24,7 @@ const TaskListCard = (props) => {
                         <div className='task__item' key={task.taskId}>
                             <h3>{task.taskTitle}</h3>
                             <button onClick={() => deleteTask(task.taskId)}>Delete</button>
-                            <button onClick={props.onAddSubTask}>Add Subtask</button>
+                            <button onClick={()=> props.onAddSubTask(task.taskId)}>Add Subtask</button>
                         </div>
                     ))
                 }

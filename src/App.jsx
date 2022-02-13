@@ -56,8 +56,9 @@ function App() {
             .catch(err => console.log(err))
     }
 
-    const showAddSubtaskModal = () => {
+    const showAddSubtaskModal = (id) => {
         setShowModal(true)
+        setTaskId(id)
     }
 
     return (
@@ -71,8 +72,8 @@ function App() {
             }
 
             <AdviceCard adviceData={advice} />
-            <TaskListCard onAddSubTask={showAddSubtaskModal}></TaskListCard>
-            <Modal showModal={showModal} onClose={() => setShowModal(false)}></Modal>
+            <TaskListCard onAddSubTask={(id)=>showAddSubtaskModal(id)}></TaskListCard>
+            <Modal showModal={showModal} taskId={taskId} onClose={() => setShowModal(false)}></Modal>
         </>
     )
 }
