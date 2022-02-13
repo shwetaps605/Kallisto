@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import './modal.styles.scss'
 import { useTasks } from "../../contexts/TaskContexts"
 
 const Modal = (props) => {
 
     const { tasks } = useTasks()
+    const subtaskTitleRef = useRef()
+    const { addSubTask } = useTasks()
+
+
+
 
     const taskState = {}
 
@@ -16,6 +21,17 @@ const Modal = (props) => {
                 setTaskForSubtask(task)
         })
     }, [props.taskId])
+
+    const handleAddingSubTask = () => {
+       
+    
+        addSubTask({ 
+            title: subtaskTitleRef.current.value,
+            taskId: taskForSubtask.taskId
+        })
+
+        props.onClose()
+    }
 
 
 
@@ -29,10 +45,10 @@ const Modal = (props) => {
                     <h2>{taskForSubtask.taskTitle}</h2>
                 </div>
                 <div className="modal__body">
-                                       
+                    <input type="text" placeholder="Add subtask" ref={subtaskTitleRef} name="subtaskTitle" />
                 </div>
                 <div className="modal__footer">
-                    <button>Add Subtask</button>
+                    <button onClick={handleAddingSubTask}>Add Subtask</button>
                     <button onClick={props.onClose}>Close</button>
                 </div>
             </div>

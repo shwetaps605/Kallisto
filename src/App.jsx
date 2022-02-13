@@ -59,6 +59,7 @@ function App() {
     const showAddSubtaskModal = (id) => {
         setShowModal(true)
         setTaskId(id)
+        console.log("App wala add");
     }
 
     return (

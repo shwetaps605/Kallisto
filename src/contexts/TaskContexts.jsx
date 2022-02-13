@@ -37,20 +37,29 @@ const TasksProvider = ({ children }) => {
         })
     }
 
-    const addSubTask = ({ title, taskId, status }) => {
+    const addSubTask = ({ title, taskId }) => {
+        console.log("adding for", taskId);
         const newSubTask = {
             subtaskId: uuidv4(),
             subtaskTitle: title,
-            subtaskStatus: status
+            subtaskCompletionStatus: false
         }
 
-        setTasks(prevTasks => {
-            return prevTasks.map(task => {
-                if (task.taskId === taskId) {
-                    task.subtasks.push(newSubTask)
-                }
-            })
+        console.log(newSubTask);
+
+        tasks.map((task, index) => {
+            if (task.taskId === taskId) {
+                console.log("Adding for", task.taskTitle, index);
+                // setTasks(prevTasks => console.log(prevTasks[index]))
+                // console.log(tasks[index]);
+                task.subtasks.push(newSubTask)
+                const newTasks = [...tasks]
+                newTasks[index] = task
+                setTasks(newTasks)
+            }
         })
+
+        // console.log(task);
     }
 
     const deleteTask = (taskId) => {
