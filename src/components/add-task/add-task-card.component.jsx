@@ -19,37 +19,48 @@ const AddTaskCard = (props) => {
         e.preventDefault()
         setDate(moment().format('LL'))
         addTask({
-            title:titleRef.current.value,
-            priority:priorityRef.current.value,
-            date:date
+            title: titleRef.current.value,
+            priority: priorityRef.current.value,
+            date: date
         })
-        titleRef.current.value= ""
-        priorityRef.current.value="Low"
+        titleRef.current.value = ""
+        priorityRef.current.value = "Low"
 
     }
 
     return (
         <>
-        <div className="add__task__card__container">
-            <h3>Add Task</h3>
-            <form onSubmit={handleSubmit}> 
-                <div className="form-group">
-                    <label>Task Title</label>
-                    <input type="text" ref={titleRef} name="taskTitle" />
+            <div className="add__task__card__container">
+                <div className="add__task__card__header">
+                    <h3>Add Task</h3>
+                    <button className='svg-button'>
+                        <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                            <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm5.247 8l-5.247 6.44-5.263-6.44-.737.678 6 7.322 6-7.335-.753-.665z" />
+                        </svg>
+                    </button>
                 </div>
-                <div className="form-group">
-                    <label> Task priority</label>
-                    <select ref={priorityRef}>
-                        <option>Low</option>
-                        <option>Medium</option>
-                        <option>High</option>
-                    </select>
+
+                <div className="add__task__card__body">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label>Task Title</label>
+                            <input type="text" ref={titleRef} name="taskTitle" />
+                        </div>
+                        <div className="form-group">
+                            <label> Task priority</label>
+                            <select ref={priorityRef}>
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                        <input type="submit" name="Add" id="add-task-button" value="Add" />
+                    </form>
                 </div>
-                <input type="submit" name="Add" id="add-task-button" value="Add"/>
-            </form>
-        </div>
+
+            </div>
         </>
-        
+
     )
 }
 
