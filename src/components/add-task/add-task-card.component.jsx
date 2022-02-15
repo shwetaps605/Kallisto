@@ -9,7 +9,7 @@ const AddTaskCard = (props) => {
     const titleRef = useRef()
     const priorityRef = useRef()
     const [date, setDate] = useState("")
-    const [showAddFields, setShowAddFields] = useState(true)
+    const [showAddFields, setShowAddFields] = useState(false)
 
     const subtaskTitle = useRef()
     const subtaskStatus = useRef()
@@ -18,6 +18,7 @@ const AddTaskCard = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setShowAddFields(false)
         setDate(moment().format('LL'))
         addTask({
             title: titleRef.current.value,

@@ -1,10 +1,11 @@
 .add__task__card__container {
     width:50%;
-    background-color: #d1911a;
+    background-color: #e6709d;
     margin:auto;
-    padding: 1.25rem;
+    padding: 1rem;
     border-radius:15px;
-    box-shadow: 0 0 10px 0 rgb(85, 80, 75);
+    color: #fff;
+    // box-shadow: 0 0 10px 0 rgb(85, 80, 75);
 
     .add__task__card__header {
         display: inline-flex;
@@ -16,6 +17,7 @@
 
     .add__task__card__body {
         width: 100%;
+        font-size: 1.25rem;
 
         form {
             display: flex;
@@ -31,11 +33,8 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    background-color: #d1911a;
                     padding: 0.75rem;
-                    color: #333;
-    
-        
+                   
                     input {
                         width: 100%;
                         height: 30px;
