@@ -11,7 +11,11 @@ const TaskItem = ({ task }) => (
         </div>
 
 
-        {task.subtasks.length == 0 && <p>No subtasks</p>}
+        {task.subtasks.length == 0 &&
+            <div className="task__item__body__box">
+                <p>No subtasks</p>
+            </div>
+        }
         {
             task.subtasks.length > 0 && task.subtasks.map(subtask => (
                 <div className="task__item__body__box">
