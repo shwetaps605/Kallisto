@@ -62,6 +62,23 @@ const TasksProvider = ({ children }) => {
         // console.log(task);
     }
 
+    const updateSubtask = ({taskId,subTaskId}) => {
+        tasks.map(task => {
+            if(task.taskId === taskId){
+                const taskToBeUpdated = task
+                taskToBeUpdated.subtasks.map(subtask => {
+                    if(subtask.subTaskId === subTaskId){
+                        const subTaskToBeUpdated = subtask
+                        subTaskToBeUpdated.subtaskCompletionStatus = true
+                    }
+                })
+            }
+        })
+        const updatedTasks = [...tasks]
+        console.log(updatedTasks)
+
+    }
+
     const deleteTask = (taskId) => {
         setTasks(prevTasks => {
             return prevTasks.filter(task => task.taskId !== taskId)
@@ -87,6 +104,7 @@ const TasksProvider = ({ children }) => {
             tasks,
             addTask,
             addSubTask,
+            updateSubtask,
             deleteTask,
             deleteSubTask
         }}>
