@@ -31,14 +31,13 @@ const TasksProvider = ({ children }) => {
             subtasks: []
         }
 
-        console.log("Mewly created task:", newTask)
         setTasks(prevTasks => {
             return [...prevTasks, newTask]
         })
     }
 
     const addSubTask = ({ title, taskId }) => {
-        console.log("adding for", taskId);
+        
         const newSubTask = {
             subtaskId: uuidv4(),
             subtaskTitle: title,
@@ -62,24 +61,20 @@ const TasksProvider = ({ children }) => {
         // console.log(task);
     }
 
-    const updateSubtask = ({ taskId, subTaskId }) => {
-        console.log();
+    const updateSubtask = (taskId, subTaskId) => {
         tasks.map(task => {
             if (task.taskId === taskId) {
                 const taskToBeUpdated = task
-                taskToBeUpdated.subtasks.map(subtask => {
-                    if (subtask.subTaskId === subTaskId) {
+                console.log("TASK TO BE UPDATED",task.taskTitle)
+                taskToBeUpdated.subtasks.map((subtask,index) => {
+                    if (subtask.subtaskId === subTaskId) {
                         const subTaskToBeUpdated = subtask
-                        subTaskToBeUpdated.subtaskCompletionStatus = true
-
-                        // console.log("updated")
-                    }
+                        subTaskToBeUpdated.subtaskCompletionStatus = true                    }
                 })
             }
         })
         const updatedTasks = [...tasks]
         setTasks(updatedTasks)
-
     }
 
     const deleteTask = (taskId) => {
@@ -97,10 +92,6 @@ const TasksProvider = ({ children }) => {
             })
         })
     }
-
-
-
-
 
     return (
         <TasksContext.Provider value={{

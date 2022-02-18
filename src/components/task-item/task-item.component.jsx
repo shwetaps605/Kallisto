@@ -9,7 +9,8 @@ const TaskItem = ({ task }) => {
     //TODO: Add this function in TasksContext
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         // console.log("Clicked on Tick")
-        updateSubtask({taskId,subtaskId})
+        console.log("SUBTASK...",subtaskId)
+        updateSubtask( taskId, subtaskId )
 
 
     }
