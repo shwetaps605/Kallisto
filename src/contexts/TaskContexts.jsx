@@ -61,6 +61,8 @@ const TasksProvider = ({ children }) => {
         // console.log(task);
     }
 
+
+
     const updateSubtask = (taskId, subTaskId) => {
         tasks.map(task => {
             if (task.taskId === taskId) {
@@ -83,14 +85,17 @@ const TasksProvider = ({ children }) => {
         })
     }
 
-    const deleteSubTask = (taskId, subtaskId) => {
-        setTasks(prevTasks => {
-            return prevTasks.map(task => {
-                if (task.taskId === taskId) {
-                    task.subtasks.filter(subtask => subtask.subtaskId !== subtaskId)
-                }
-            })
+    const deleteSubtask = (taskId, subtaskId) => {
+        tasks.map(task => {
+            if(task.taskId === taskId){
+                const taskToBeUpdated = task
+                console.log('task to update',taskToBeUpdated.taskTitle)
+                const subtasks = taskToBeUpdated.subtasks.filter(subtask => subtask.subtaskId !== subtaskId)
+                taskToBeUpdated.subtasks = subtasks
+            }
         })
+        const updatedTasks = [...tasks]
+        setTasks(updatedTasks)
     }
 
     return (
@@ -100,7 +105,7 @@ const TasksProvider = ({ children }) => {
             addSubTask,
             updateSubtask,
             deleteTask,
-            deleteSubTask
+            deleteSubtask
         }}>
             {children}
         </TasksContext.Provider>

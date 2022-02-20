@@ -32,6 +32,11 @@
                 cursor: pointer;
                 background-color: transparent;
                 border:none;
+
+                svg:hover {
+                    fill: rgb(19, 149, 19);
+                    // animation: alternate ease-in-out 1s infinite ;
+                }
             }
         }
     }
