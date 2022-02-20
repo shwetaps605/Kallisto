@@ -12,11 +12,11 @@ const TaskItem = ({ task }) => {
 
     const handleSubTaskDelete = (taskId, subtaskId, status) => {
         console.log("Subtask deletion started")
-        if(!status){
+        if (!status) {
             alert('This subtask is incomplete')
             return
         }
-        deleteSubtask(taskId,subtaskId);
+        deleteSubtask(taskId, subtaskId)
     }
 
 
@@ -31,33 +31,28 @@ const TaskItem = ({ task }) => {
 
 
             {task.subtasks.length == 0 &&
-                <div className="task__item__body__box">
+                <div className="task__item__body__box default">
                     <p>No subtasks</p>
                 </div>
             }
 
             {
                 task.subtasks.length > 0 && task.subtasks.map(subtask => (
-                    <div className="task__item__body__box" onDoubleClick={() => handleSubTaskDelete(task.taskId,subtask.subtaskId, subtask.subtaskCompletionStatus)}>
+                    <div className="task__item__body__box" onDoubleClick={() => handleSubTaskDelete(task.taskId, subtask.subtaskId, subtask.subtaskCompletionStatus)}>
                         {
                             subtask.subtaskCompletionStatus ?
-                                <strike><p>{subtask.subtaskTitle}</p></strike> :
-                                <p>{subtask.subtaskTitle}</p>
+                                <strike><p className="subtitle__text striked">{subtask.subtaskTitle}</p></strike> :
+                                <p className="subtitle__text">{subtask.subtaskTitle}</p>
                         }
                         {
                             !subtask.subtaskCompletionStatus &&
-                            <svg onClick={() => { handleSubtaskCompleteAction(task.taskId, subtask.subtaskId) }} className="svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                            <svg onClick={() => { handleSubtaskCompleteAction(task.taskId, subtask.subtaskId) }} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
                                 <path d="M24 4.685l-16.327 17.315-7.673-9.054.761-.648 6.95 8.203 15.561-16.501.728.685z" />
                             </svg>
                         }
-
-
-                        {/* <div className="blue-line"></div> */}
                     </div>
-
                 ))
             }
-
         </div>
     )
 }
