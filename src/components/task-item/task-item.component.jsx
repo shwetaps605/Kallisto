@@ -26,8 +26,10 @@ const TaskItem = ({ task }) => {
             <div className="task__item__header__box">
                 <p id='date'>{task.createdAt}</p>
                 <h3>{task.taskTitle}</h3>
-                <div className="red-line"></div>
+                
             </div>
+
+            <div className="red-line"></div>
 
 
             {task.subtasks.length == 0 &&
