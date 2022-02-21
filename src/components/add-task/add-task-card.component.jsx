@@ -10,10 +10,6 @@ const AddTaskCard = (props) => {
     const priorityRef = useRef()
     const [date, setDate] = useState("")
     const [showAddFields, setShowAddFields] = useState(false)
-
-    const subtaskTitle = useRef()
-    const subtaskStatus = useRef()
-
     const { addTask } = useTasks()
 
     const handleSubmit = (e) => {
@@ -39,12 +35,16 @@ const AddTaskCard = (props) => {
                     <button className='svg-button' onClick={() => setShowAddFields(!showAddFields)}>
                         {
                             showAddFields ?
-                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                                    <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm5.247 15l-5.247-6.44-5.263 6.44-.737-.678 6-7.322 6 7.335-.753.665z" />
-                                </svg> :
-                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                                    <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm5.247 8l-5.247 6.44-5.263-6.44-.737.678 6 7.322 6-7.335-.753-.665z" />
+                                <svg width="40" height="27" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M38.7417 26.6667L20 2.71008L1.30167 26.6667L0 25.6351L20 8.39233e-05L40 25.6517L38.7417 26.6667Z" fill="white" />
                                 </svg>
+
+                                :
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M38.7417 6.66675L20 30.6234L1.30167 6.66675L0 7.69841L20 33.3334L40 7.68175L38.7417 6.66675Z" fill="white" />
+                                </svg>
+
+
                         }
                     </button>
                 </div>

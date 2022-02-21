@@ -1,24 +1,37 @@
 .add__task__card__container {
     width:50%;
-    background-color: #dd77a3;
-    // opacity: 0.3;
+    background-color: #f37ea5;
     margin:auto;
     padding: 1rem;
     border-radius:15px;
     color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
     // box-shadow: 0 0 10px 0 rgb(85, 80, 75);
 
     .add__task__card__header {
-        display: inline-flex;
+        display: flex;
         justify-content: space-between;
         width: 100%;
         font-size: 2rem;
-        padding: 1rem;
-        // background-color: #fff;
+    
+        
+        // background-color: rgb(235, 209, 209);
 
 
         button {
-            // background-color: rgb(214, 190, 190);
+            // background-color: rgb(226, 255, 120);
+           
+
+            svg {
+                // margin-top: 1rem;
+                // background-color: thistle;
+                fill: #fff;
+                
+               
+                
+            }
             
         }
     }
