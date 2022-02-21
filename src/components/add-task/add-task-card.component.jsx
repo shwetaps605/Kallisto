@@ -9,7 +9,7 @@ const AddTaskCard = (props) => {
     const titleRef = useRef()
     const priorityRef = useRef()
     const [date, setDate] = useState("")
-    const [showAddFields, setShowAddFields] = useState(false)
+    const [showAddFields, setShowAddFields] = useState(true)
     const { addTask } = useTasks()
 
     const handleSubmit = (e) => {
@@ -49,26 +49,30 @@ const AddTaskCard = (props) => {
                     </button>
                 </div>
 
+
                 {
                     showAddFields &&
                     <div className="add__task__card__body">
                         <form onSubmit={handleSubmit}>
                             <div className='form-fields'>
                                 <div className="form-group">
-                                    <label>Task Title</label>
+                                    <label>Title</label>
                                     <input type="text" ref={titleRef} name="taskTitle" />
                                 </div>
                                 <div className="form-group">
-                                    <label> Task priority</label>
+                                    <label>Priority</label>
                                     <select ref={priorityRef}>
                                         <option>Low</option>
                                         <option>Medium</option>
                                         <option>High</option>
                                     </select>
                                 </div>
+
+                                <input type="submit" name="Add" id="add-task-button" value="Add" />
+
+
                             </div>
 
-                            <input type="submit" name="Add" id="add-task-button" value="Add" />
                         </form>
                     </div>
                 }
