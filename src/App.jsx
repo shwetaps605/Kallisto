@@ -13,7 +13,7 @@ function App() {
     const [long, setLong] = useState([])
     const [data, setData] = useState([])
     const [advice, setAdvice] = useState("")
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(true)
     const [taskId, setTaskId] = useState("")
 
 
