@@ -41,7 +41,7 @@ const Modal = (props) => {
     return (
         <div className="modal" onClick={props.onClose}>
             <div className="modal__content" onClick={e => e.stopPropagation()}>
-                <div className="modal__header">
+                <div className="form__group">
                     <h2>{taskForSubtask.taskTitle}</h2>
                     <button onClick={props.onClose}>
                         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
