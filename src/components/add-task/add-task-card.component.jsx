@@ -31,29 +31,34 @@ const AddTaskCard = (props) => {
             <div className="add__task__card__container">
 
                 <div className="add__task__card__header">
-                    <h3>Add Task</h3>
-                    <button className='svg-button' onClick={() => setShowAddFields(!showAddFields)}>
-                        {
-                            showAddFields ?
-                                <svg width="40" height="27" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M38.7417 26.6667L20 2.71008L1.30167 26.6667L0 25.6351L20 8.39233e-05L40 25.6517L38.7417 26.6667Z" fill="white" />
+                    {
+                        !showAddFields &&
+                        <>
+                            <h3>Add Task</h3>
+                            <button className='svg-button' onClick={() => setShowAddFields(!showAddFields)}>
+                                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M36.4717 20.0001L23.9267 30.3917L25 31.6667L40 19.1317L25 6.66675L23.925 7.94008L36.4733 18.3334H0V20.0001H36.4717Z" />
                                 </svg>
-
-                                :
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M38.7417 6.66675L20 30.6234L1.30167 6.66675L0 7.69841L20 33.3334L40 7.68175L38.7417 6.66675Z" fill="white" />
-                                </svg>
-
-
-                        }
-                    </button>
+                            </button>
+                        </>
+                    }
                 </div>
 
 
                 {
                     showAddFields &&
                     <div className="add__task__card__body">
+                        
+                        <button onClick={() => setShowAddFields(false)}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.117 12L9.644 5.765L9 5L0 12.521L9 20L9.645 19.236L2.116 13H24V12H2.117Z" />
+                            </svg>
+                        </button>
+
                         <form onSubmit={handleSubmit}>
+
+
+
                             <div className='form-fields'>
                                 <div className="form-group">
                                     <label>Title</label>

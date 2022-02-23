@@ -1,3 +1,13 @@
+button {
+    background: none;
+    border: none;
+    svg {
+        fill: #fff;
+        cursor: pointer;
+    }
+    
+}
+
 .add__task__card__container {
     width:70%;
     background-color: #f37ea5;
@@ -5,6 +15,7 @@
     padding: 1rem;
     border-radius:15px;
     color: #fff;
+    font-family: 'Bitter', serif;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -15,36 +26,28 @@
         justify-content: space-between;
         width: 100%;
         font-size: 2rem;
-    
+
         
-        // background-color: rgb(235, 209, 209);
-
-
-        button {
-            // background-color: rgb(226, 255, 120);
-           
-
-            svg {
-                // margin-top: 1rem;
-                // background-color: thistle;
-                fill: #fff;
-                
-               
-                
-            }
-            
-        }
     }
 
     .add__task__card__body {
         width: 100%;
         font-size: 1.25rem;
+        
+
+        button {
+            display: inline;
+            float: right;
+            margin-bottom: 1rem;
+        }
 
         form {
+            margin-top: 1.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
+
+           
     
             .form-fields {
                 display: flex;

@@ -38,20 +38,19 @@ function App() {
             .then(res => res.json())
             .then(result => {
                 setData(result)
-                console.log(result)
             })
             .catch(err => console.error(err))
     }
+
+
 
 
     const fetchAdvice = () => {
         const random = Math.floor(Math.random() * 100)
         axios.get(`https://api.adviceslip.com/advice/${random}`)
             .then((response) => {
-                console.log(response.data);
                 const fetchedadvice = response.data.slip.advice
                 setAdvice(fetchedadvice)
-                console.log(fetchedadvice)
             })
             .catch(err => console.log(err))
     }
