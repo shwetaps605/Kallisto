@@ -1,9 +1,7 @@
 .task__item {
     background-color: #ffdeb2;
     border-radius: 5px;
-
-    
-   
+    padding-bottom: 1rem;
 
     .task__item__header__box {
         padding: 0.5rem 1rem 0 1rem;
@@ -18,7 +16,6 @@
             color: rgb(105, 102, 102);
             font-size: 1rem;
             margin: 0;
-           
         }
 
         h3 {
@@ -35,13 +32,12 @@
 
 
     .task__item__body__box {
-        // background-color: thistle;
         cursor: pointer;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         border-bottom: 0.2px solid blue;
         display: flex;
-        // flex-direction:row-reverse;
+        text-align: left;
         justify-content: space-between;
         align-items: center;
 
@@ -66,9 +62,6 @@
             opacity: 1;
             fill:  #187e29;;
         }
-
-
-
     }
 
     .task__item__body__box.default {
