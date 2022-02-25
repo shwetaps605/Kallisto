@@ -4,10 +4,18 @@ import { useTasks } from "../../contexts/TaskContexts"
 
 const TaskItem = ({ task }) => {
 
-    const { updateSubtask, deleteSubtask } = useTasks()
+    const { updateSubtask, deleteSubtask, deleteTask } = useTasks()
 
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         updateSubtask(taskId, subtaskId)
+    }
+
+    const handleRemoveTask = (taskId) => {
+        const subtasks = task.subtasks;
+        console.log(subtasks);
+        
+        
+
     }
 
     const handleSubTaskDelete = (taskId, subtaskId, status) => {
@@ -23,7 +31,7 @@ const TaskItem = ({ task }) => {
     return (
         <div className="task__item">
 
-            <div className="task__item__header__box">
+            <div className="task__item__header__box" onDoubleClick={() => handleRemoveTask(task.taskId)}>
                 <p id='date'>{task.createdAt}</p>
                 <div className="task__item__title">
                     <h3>{task.taskTitle}</h3>
@@ -60,7 +68,11 @@ const TaskItem = ({ task }) => {
                         }
                     </div>
                 ))
+
             }
+            {/* <div className="task__item add__subtask" contentEditable="true">
+                <p>Add Subtask</p>
+            </div> */}
         </div>
     )
 }
