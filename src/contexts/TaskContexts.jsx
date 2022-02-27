@@ -36,7 +36,7 @@ const TasksProvider = ({ children }) => {
         })
     }
 
-    const addSubTask = ({ title, taskId }) => {
+    const addSubtask = ({ title, taskId }) => {
         
         const newSubTask = {
             subtaskId: uuidv4(),
@@ -102,7 +102,7 @@ const TasksProvider = ({ children }) => {
         <TasksContext.Provider value={{
             tasks,
             addTask,
-            addSubTask,
+            addSubtask,
             updateSubtask,
             deleteTask,
             deleteSubtask

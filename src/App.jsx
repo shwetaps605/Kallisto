@@ -4,7 +4,6 @@ import './App.css'
 import WeatherCard from './components/weather-card/weather-card.component';
 import AdviceCard from './components/advice-card/advice-card.component';
 import TaskListCard from './components/task-list/task-list-card.component';
-import AddTaskCard from './components/add-task/add-task-card.component';
 import Modal from './components/modal/modal.component';
 import './App.css'
 

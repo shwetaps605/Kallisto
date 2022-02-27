@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './task-list-card.styles.scss'
-import AddTaskCard from '../add-task/add-task-card.component'
 import TaskItem from '../task-item/task-item.component'
 import { useTasks } from '../../contexts/TaskContexts'
 

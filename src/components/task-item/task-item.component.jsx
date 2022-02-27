@@ -4,7 +4,7 @@ import { useTasks } from "../../contexts/TaskContexts"
 
 const TaskItem = ({ task }) => {
 
-    const { updateSubtask, deleteSubtask, deleteTask } = useTasks()
+    const { updateSubtask, deleteSubtask, deleteTask, addSubtask } = useTasks()
 
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         updateSubtask(taskId, subtaskId)
@@ -12,10 +12,8 @@ const TaskItem = ({ task }) => {
 
     const handleRemoveTask = (taskId) => {
         const subtasks = task.subtasks;
-        console.log(subtasks);
-        
-        
-
+        const incompleteSubtask = subtasks.filter((subtask) => { return subtask.subtaskCompletionStatus === false })
+        console.log("####", incompleteSubtask);
     }
 
     const handleSubTaskDelete = (taskId, subtaskId, status) => {
@@ -27,6 +25,9 @@ const TaskItem = ({ task }) => {
         deleteSubtask(taskId, subtaskId)
     }
 
+    const handleAddSubtask = () => {
+        
+    }
 
     return (
         <div className="task__item">
@@ -35,18 +36,17 @@ const TaskItem = ({ task }) => {
                 <p id='date'>{task.createdAt}</p>
                 <div className="task__item__title">
                     <h3>{task.taskTitle}</h3>
-
                     <button>
                         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z" /></svg>
                     </button>
                 </div>
-
             </div>
 
             <div className="red-line"></div>
 
 
-            {task.subtasks.length == 0 &&
+            {
+                task.subtasks.length == 0 &&
                 <div className="task__item__body__box default">
                     <p>No subtasks</p>
                 </div>
