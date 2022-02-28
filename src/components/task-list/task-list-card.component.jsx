@@ -6,7 +6,13 @@ import { useTasks } from '../../contexts/TaskContexts'
 
 const TaskListCard = (props) => {
 
-    const { tasks } = useTasks()
+    const { tasks, addSubtask } = useTasks()
+
+    const handleAddSubtask = (tastTitle,taskId) => {
+        console.log("clickeddd")
+        
+    }
+
 
     return (
 
@@ -14,7 +20,7 @@ const TaskListCard = (props) => {
 
             {
                 tasks.map(task => (
-                    <TaskItem key={task.taskId} task={task}></TaskItem>
+                    <TaskItem key={task.taskId} task={task} handleAddSubtask={handleAddSubtask}></TaskItem>
                 ))
             }
         </div>

@@ -2,9 +2,9 @@ import React from "react"
 import './task-item.styles.scss'
 import { useTasks } from "../../contexts/TaskContexts"
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, handleAddSubtask }) => {
 
-    const { updateSubtask, deleteSubtask, deleteTask, addSubtask } = useTasks()
+    const { updateSubtask, deleteSubtask, deleteTask} = useTasks()
 
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         updateSubtask(taskId, subtaskId)
@@ -25,9 +25,7 @@ const TaskItem = ({ task }) => {
         deleteSubtask(taskId, subtaskId)
     }
 
-    const handleAddSubtask = () => {
-        
-    }
+    
 
     return (
         <div className="task__item">
@@ -37,7 +35,7 @@ const TaskItem = ({ task }) => {
                 <div className="task__item__title">
                     <h3>{task.taskTitle}</h3>
                     <button>
-                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z" /></svg>
+                        <svg onClick={handleAddSubtask} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z" /></svg>
                     </button>
                 </div>
             </div>
@@ -70,9 +68,6 @@ const TaskItem = ({ task }) => {
                 ))
 
             }
-            {/* <div className="task__item add__subtask" contentEditable="true">
-                <p>Add Subtask</p>
-            </div> */}
         </div>
     )
 }
