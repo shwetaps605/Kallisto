@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import './App.css'
 import WeatherCard from './components/weather-card/weather-card.component';
 import AdviceCard from './components/advice-card/advice-card.component';
@@ -15,7 +15,6 @@ function App() {
     const [data, setData] = useState([])
     const [advice, setAdvice] = useState("")
     const [showModal, setShowModal] = useState(false)
-    const [taskId, setTaskId] = useState("")
 
 
     useEffect(() => {
@@ -56,10 +55,8 @@ function App() {
             .catch(err => console.log(err))
     }
 
-    const showAddSubtaskModal = (id) => {
+    const showAddSubtaskModal = () => {
         setShowModal(true)
-        setTaskId(id)
-        console.log("App wala add");
     }
 
     return (
@@ -74,8 +71,8 @@ function App() {
 
             <AdviceCard adviceData={advice} />
             <AddTaskCard></AddTaskCard>
-            <TaskListCard onAddSubTask={(id)=>showAddSubtaskModal(id)}></TaskListCard>
-            <Modal showModal={showModal} taskId={taskId} onClose={() => setShowModal(false)}></Modal>
+            <TaskListCard onAddSubTask={showAddSubtaskModal}></TaskListCard>
+            <Modal showModal={showModal} onClose={() => setShowModal(false)}></Modal>
         </>
     )
 }

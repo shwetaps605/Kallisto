@@ -1,7 +1,10 @@
 import { useState } from "react"
 
-const useTask = (id) => {
-    const [taskId, setTaskId] = useState(null)
+
+
+
+const useTask = (initialValue) => {
+    const [taskId, setTaskId] = useState(initialValue)
     console.log("INSIDE CUSTOM HOOK")
 }
 
