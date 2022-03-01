@@ -15,7 +15,6 @@ function App() {
     const [data, setData] = useState([])
     const [advice, setAdvice] = useState("")
 
-
     useEffect(() => {
         fetchData()
     }, [lat, long])
@@ -23,8 +22,6 @@ function App() {
     useEffect(() => {
         fetchAdvice()
     }, [])
-
-
 
     const fetchData = async () => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -41,9 +38,6 @@ function App() {
             .catch(err => console.error(err))
     }
 
-
-
-
     const fetchAdvice = () => {
         const random = Math.floor(Math.random() * 100)
         axios.get(`https://api.adviceslip.com/advice/${random}`)
@@ -54,17 +48,14 @@ function App() {
             .catch(err => console.log(err))
     }
 
-   
     return (
         <>
             <h2 id='title'>kallisto</h2>
-
             {
                 (typeof data.main != 'undefined') ?
                     (<WeatherCard weatherData={data} />) :
                     (<div></div>)
             }
-
             <AdviceCard adviceData={advice} />
             <AddTaskCard></AddTaskCard>
             <TaskListCard></TaskListCard>

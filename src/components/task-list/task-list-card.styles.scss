@@ -1,10 +1,10 @@
 
 .task__list__container{
-    width: 80%;
+    width: 70%;
     margin: auto;
-    margin-top:1.5rem;
+    margin-top:5rem;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 1.5rem;
-    grid-row: auto;    
+    grid-auto-rows: auto;   
 }
