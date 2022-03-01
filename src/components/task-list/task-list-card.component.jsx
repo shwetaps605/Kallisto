@@ -6,9 +6,10 @@ import { useTasks } from '../../contexts/TaskContexts'
 
 const TaskListCard = (props) => {
 
-    const { tasks,saveTaskId, showModal } = useTasks()
-    
+    const { tasks, saveTaskId, showModal } = useTasks()
+
     const handleAddSubtask = (taskId) => {
+        console.log("GOT TASK ID FROM TASK ITEM", taskId)
         saveTaskId(taskId)
         showModal()
     }

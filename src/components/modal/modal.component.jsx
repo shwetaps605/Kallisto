@@ -6,7 +6,7 @@ const Modal = () => {
 
     const {
         tasks,
-        addSubTask,
+        addSubtask,
         modalState,
         hideModal,
         taskId
@@ -24,13 +24,8 @@ const Modal = () => {
         })
     }, [taskId])
 
-
-
     const handleAddingSubTask = () => {
-        addSubTask({
-            title: subtaskTitleRef.current.value,
-            taskId: taskForSubtask.taskId
-        })
+        addSubtask(subtaskTitleRef.current.value)
         hideModal()
     }
 

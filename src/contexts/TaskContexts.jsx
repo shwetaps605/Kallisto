@@ -11,10 +11,10 @@ export const useTasks = () => {
 const TasksProvider = ({ children }) => {
 
     const [tasks, setTasks] = useLocalStorage('tasks', [])
-    const [taskId, setTaskId] = useState('')
+    const [taskId, setTaskId] = useState("")
     const [modalState, setModalState] = useState(false)
 
-    const saveTaskId = (id) => {
+    const saveTaskId = async (id) => {
         setTaskId(id)
     }
 
@@ -25,6 +25,8 @@ const TasksProvider = ({ children }) => {
     const hideModal = () => {
         setModalState(false)
     }
+
+  
 
     const addTask = ({ title, priority, date }) => {
         const newTask = {
@@ -40,8 +42,8 @@ const TasksProvider = ({ children }) => {
         })
     }
 
-    const addSubtask = ({ title, taskId }) => {
-        
+    const addSubtask = (title) => {
+
         const newSubTask = {
             subtaskId: uuidv4(),
             subtaskTitle: title,
@@ -49,7 +51,7 @@ const TasksProvider = ({ children }) => {
         }
 
         tasks.map((task, index) => {
-            if (task.taskId === taskId) {        
+            if (task.taskId === taskId) {
                 task.subtasks.push(newSubTask)
                 const newTasks = [...tasks]
                 newTasks[index] = task
@@ -64,10 +66,11 @@ const TasksProvider = ({ children }) => {
         tasks.map(task => {
             if (task.taskId === taskId) {
                 const taskToBeUpdated = task
-                taskToBeUpdated.subtasks.map((subtask,index) => {
+                taskToBeUpdated.subtasks.map((subtask, index) => {
                     if (subtask.subtaskId === subTaskId) {
                         const subTaskToBeUpdated = subtask
-                        subTaskToBeUpdated.subtaskCompletionStatus = true                    }
+                        subTaskToBeUpdated.subtaskCompletionStatus = true
+                    }
                 })
             }
         })
@@ -83,7 +86,7 @@ const TasksProvider = ({ children }) => {
 
     const deleteSubtask = (taskId, subtaskId) => {
         tasks.map(task => {
-            if(task.taskId === taskId){
+            if (task.taskId === taskId) {
                 const taskToBeUpdated = task
                 const subtasks = taskToBeUpdated.subtasks.filter(subtask => subtask.subtaskId !== subtaskId)
                 taskToBeUpdated.subtasks = subtasks
