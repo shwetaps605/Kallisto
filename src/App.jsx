@@ -14,7 +14,6 @@ function App() {
     const [long, setLong] = useState([])
     const [data, setData] = useState([])
     const [advice, setAdvice] = useState("")
-    const [showModal, setShowModal] = useState(false)
 
 
     useEffect(() => {
@@ -55,10 +54,7 @@ function App() {
             .catch(err => console.log(err))
     }
 
-    const showAddSubtaskModal = () => {
-        setShowModal(true)
-    }
-
+   
     return (
         <>
             <h2 id='title'>kallisto</h2>
@@ -71,8 +67,8 @@ function App() {
 
             <AdviceCard adviceData={advice} />
             <AddTaskCard></AddTaskCard>
-            <TaskListCard onAddSubTask={showAddSubtaskModal}></TaskListCard>
-            <Modal showModal={showModal} onClose={() => setShowModal(false)}></Modal>
+            <TaskListCard></TaskListCard>
+            <Modal></Modal>
         </>
     )
 }

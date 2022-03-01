@@ -18,12 +18,12 @@ const TasksProvider = ({ children }) => {
         setTaskId(id)
     }
 
-    const getSavedTaskId = () => {
-        return taskId
-    }
-
     const showModal = () => {
         setModalState(true)
+    }
+
+    const hideModal = () => {
+        setModalState(false)
     }
 
     const addTask = ({ title, priority, date }) => {
@@ -96,15 +96,16 @@ const TasksProvider = ({ children }) => {
     return (
         <TasksContext.Provider value={{
             tasks,
+            taskId,
             modalState,
             showModal,
+            hideModal,
             addTask,
             addSubtask,
             updateSubtask,
             deleteTask,
             deleteSubtask,
-            saveTaskId,
-            getSavedTaskId
+            saveTaskId
         }}>
             {children}
         </TasksContext.Provider>

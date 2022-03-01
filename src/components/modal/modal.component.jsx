@@ -2,48 +2,46 @@ import React, { useState, useEffect, useRef } from "react"
 import './modal.styles.scss'
 import { useTasks } from "../../contexts/TaskContexts"
 
-const Modal = (props) => {
+const Modal = () => {
 
-    const { tasks } = useTasks()
+    const {
+        tasks,
+        addSubTask,
+        modalState,
+        hideModal,
+        taskId
+    } = useTasks()
+
     const subtaskTitleRef = useRef()
-    const { addSubTask } = useTasks()
-
-
-
-
     const taskState = {}
 
     const [taskForSubtask, setTaskForSubtask] = useState(taskState)
 
     useEffect(() => {
         tasks.map(task => {
-            if (task.taskId === props.taskId)
+            if (task.taskId === taskId)
                 setTaskForSubtask(task)
         })
-    }, [props.taskId])
+    }, [taskId])
+
+
 
     const handleAddingSubTask = () => {
-
-
         addSubTask({
             title: subtaskTitleRef.current.value,
             taskId: taskForSubtask.taskId
         })
-
-        props.onClose()
+        hideModal()
     }
 
-
-
-
-    if (!props.showModal) return null
+    if (!modalState) return null
 
     return (
-        <div className="modal" onClick={props.onClose}>
+        <div className="modal" onClick={hideModal}>
             <div className="modal__content" onClick={e => e.stopPropagation()}>
                 <div className="form__group">
                     <h2>{taskForSubtask.taskTitle}</h2>
-                    <button onClick={props.onClose}>
+                    <button onClick={hideModal}>
                         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
                             <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm0 10.293l5.293-5.293.707.707-5.293 5.293 5.293 5.293-.707.707-5.293-5.293-5.293 5.293-.707-.707 5.293-5.293-5.293-5.293.707-.707 5.293 5.293z" />
                         </svg>
