@@ -2,7 +2,15 @@ import React from 'react'
 
 const Checkbox = (props) => {
     return (
-        <input type="checkbox" {...props} />
+        <div className="checkbox">
+            {
+                props.checked ?
+                    <strike><p>Task</p></strike> :
+                    <input type="checkbox" {...props} />
+            }
+
+        </div>
+
     )
 }
 
