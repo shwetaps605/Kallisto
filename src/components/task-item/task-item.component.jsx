@@ -15,7 +15,6 @@ const TaskItem = ({ task, handleAddSubtask }) => {
     const handleRemoveTask = (taskId) => {
         const subtasks = task.subtasks;
         const incompleteSubtask = subtasks.filter((subtask) => { return subtask.subtaskCompletionStatus === false })
-        console.log("####", incompleteSubtask);
     }
 
     const handleSubTaskDelete = (taskId, subtaskId, status) => {
