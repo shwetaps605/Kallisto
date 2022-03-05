@@ -26,6 +26,10 @@ const TaskItem = ({ task, handleAddSubtask }) => {
         deleteSubtask(taskId, subtaskId)
     }
 
+    const clickedCheck = () => {
+        console.log("User checked the task")
+    }
+
 
 
     return (
@@ -59,11 +63,13 @@ const TaskItem = ({ task, handleAddSubtask }) => {
                                 <strike><p className="subtitle__text striked">{subtask.subtaskTitle}</p></strike> :
                                 <p className="subtitle__text">{subtask.subtaskTitle}</p>
                         }
-                        {
+                        <Checkbox value={subtask.subtaskTitle} checked={subtask.subtaskCompletionStatus} onChange={() => handleSubtaskCompleteAction(task.taskId, subtask.subtaskId)}></Checkbox>
+
+                        {/* {
                             !subtask.subtaskCompletionStatus &&
                             <Checkbox checked={isChecked} onChange={() => setIsChecked(!isChecked)}></Checkbox>
 
-                        }
+                        } */}
                     </div>
                 ))
 
