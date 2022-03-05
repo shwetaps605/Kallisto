@@ -6,7 +6,6 @@ import Checkbox from "../checkbox/checkbox.component"
 const TaskItem = ({ task, handleAddSubtask }) => {
 
     const { updateSubtask, deleteSubtask, deleteTask } = useTasks()
-    const [isChecked, setIsChecked] = useState(false)
 
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         updateSubtask(taskId, subtaskId)
@@ -15,6 +14,11 @@ const TaskItem = ({ task, handleAddSubtask }) => {
     const handleRemoveTask = (taskId) => {
         const subtasks = task.subtasks;
         const incompleteSubtask = subtasks.filter((subtask) => { return subtask.subtaskCompletionStatus === false })
+        if (incompleteSubtask.length > 0) {
+            alert('This task has incomplete tasks, Complete them first')
+        } else {
+            deleteTask(taskId)
+        }
     }
 
     const handleSubTaskDelete = (taskId, subtaskId, status) => {
@@ -26,9 +30,7 @@ const TaskItem = ({ task, handleAddSubtask }) => {
         deleteSubtask(taskId, subtaskId)
     }
 
-    const clickedCheck = () => {
-        console.log("User checked the task")
-    }
+
 
 
 
@@ -64,12 +66,6 @@ const TaskItem = ({ task, handleAddSubtask }) => {
                                 <p className="subtitle__text">{subtask.subtaskTitle}</p>
                         }
                         <Checkbox value={subtask.subtaskTitle} checked={subtask.subtaskCompletionStatus} onChange={() => handleSubtaskCompleteAction(task.taskId, subtask.subtaskId)}></Checkbox>
-
-                        {/* {
-                            !subtask.subtaskCompletionStatus &&
-                            <Checkbox checked={isChecked} onChange={() => setIsChecked(!isChecked)}></Checkbox>
-
-                        } */}
                     </div>
                 ))
 
