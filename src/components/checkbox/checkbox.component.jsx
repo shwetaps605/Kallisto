@@ -1,4 +1,5 @@
 import React from 'react'
+import './checkbox.styles.scss'
 
 const Checkbox = (props) => {
     return (
