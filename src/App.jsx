@@ -6,7 +6,7 @@ import AdviceCard from './components/advice-card/advice-card.component';
 import TaskListCard from './components/task-list/task-list-card.component';
 import Modal from './components/modal/modal.component';
 import AddTaskCard from './components/add-task/add-task-card.component'
-import Tas
+import TaskProgressCard from './components/task-card/task-card.component';
 
 import './App.css'
 
@@ -61,6 +61,7 @@ function App() {
                     (<div></div>)
             }
             <AdviceCard adviceData={advice} />
+            <TaskProgressCard></TaskProgressCard>
             <AddTaskCard></AddTaskCard>
             <TaskListCard></TaskListCard>
             <Modal></Modal>
