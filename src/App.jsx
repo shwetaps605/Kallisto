@@ -7,7 +7,7 @@ import TaskListCard from './components/task-list/task-list-card.component';
 import Modal from './components/modal/modal.component';
 import AddTaskCard from './components/add-task/add-task-card.component'
 import TaskProgressCard from './components/task-card/task-card.component';
-
+import { useTasks } from './contexts/TaskContexts';
 import './App.css'
 
 function App() {
@@ -21,11 +21,12 @@ function App() {
         fetchData()
     }, [lat, long])
 
-    
+
 
     useEffect(() => {
         fetchAdvice()
-    },[])
+    }, [])
+
 
     const fetchData = async () => {
         navigator.geolocation.getCurrentPosition((position) => {
