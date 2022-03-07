@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react/cjs/react.production.min'
 import { useTasks } from '../../contexts/TaskContexts'
+import './task-card.styles.scss'
 
 const TaskProgressCard = (props) => {
 
@@ -7,9 +9,14 @@ const TaskProgressCard = (props) => {
     const [numberOfCompletedTasks, setNumberOfCompletedTasks] = useState(0)
     const [totalNumberOfTasks, setTotalNumberOfTasks] = useState(0)
 
-    const getTotalNumberOfTasks = () => {
-        setTotalNumberOfTasks(tasks.length)
-    }
+    // useEffect(() => {
+    //     getTotalNumberOfTasks()
+    // }, [])
+
+    // const getTotalNumberOfTasks = () => {
+    //     console.log(tasks)
+    //     // setTotalNumberOfTasks(tasks.length)
+    // }
 
 
 
