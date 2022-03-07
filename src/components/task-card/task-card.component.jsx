@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useTasks } from '../../contexts/TaskContexts'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import './task-card.styles.scss'
 
 const TaskProgressCard = (props) => {
@@ -10,7 +10,7 @@ const TaskProgressCard = (props) => {
     ChartJS.register(ArcElement, Tooltip, Legend);
 
     const { tasks } = useTasks()
-    
+
     const [numberOfCompletedTasks, setNumberOfCompletedTasks] = useState(0)
     const [totalNumberOfTasks, setTotalNumberOfTasks] = useState(0)
     const [numberOfLowPriorityTasks, setNumberOfLowPriorityTasks] = useState(0)
@@ -21,23 +21,23 @@ const TaskProgressCard = (props) => {
     const data = {
         labels: ['Low', 'Medium', 'High'],
         datasets: [
-          {
-            label: '# of tasks',
-            data: [numberOfLowPriorityTasks, numberOfMediumPriorityTasks, numberOfHighPriorityTasks],
-            backgroundColor: [
-              'green',
-              'yellow',
-              'red'
-            ],
-            borderColor: [
-              'thistle',
-              'thistle',
-              'thistle',
-            ],
-            borderWidth: 10,
-          },
+            {
+                label: '# of tasks',
+                data: [numberOfLowPriorityTasks, numberOfMediumPriorityTasks, numberOfHighPriorityTasks],
+                backgroundColor: [
+                    'green',
+                    'yellow',
+                    'red'
+                ],
+                borderColor: [
+                    'thistle',
+                    'thistle',
+                    'thistle',
+                ],
+                borderWidth: 10,
+            },
         ],
-      };
+    };
 
 
     useEffect(() => {
@@ -47,9 +47,9 @@ const TaskProgressCard = (props) => {
 
     const getTotalNumberOfTasks = () => {
         setTotalNumberOfTasks(tasks.length)
-        setNumberOfLowPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Low'}).length)
-        setNumberOfMediumPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Medium'}).length)
-        setNumberOfHighPriorityTasks(tasks.filter(task => { return task.taskPriority === 'High'}).length)
+        setNumberOfLowPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Low' }).length)
+        setNumberOfMediumPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Medium' }).length)
+        setNumberOfHighPriorityTasks(tasks.filter(task => { return task.taskPriority === 'High' }).length)
     }
 
     return (
@@ -58,7 +58,10 @@ const TaskProgressCard = (props) => {
                 <p> {numberOfCompletedTasks} tasks Completed</p>
                 <p>{totalNumberOfTasks} tasks added</p>
             </div>
-            <Pie data={data}/>
+            <div className="info__chart">
+                <Doughnut data={data} />
+
+            </div>
 
         </div>
     )
