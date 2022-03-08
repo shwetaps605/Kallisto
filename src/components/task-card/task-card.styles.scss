@@ -1,20 +1,32 @@
 .task__progress__card{
-    background-color: thistle;
+    background-color: rgba(238, 214, 238, 0.1 );
     display: flex;
     padding: 1rem;
     margin: auto;
     width: 70%;
     border-radius:15px;
     border: 1px solid #fff;
-    // flex-direction: column;
-    align-items: center;
+    // align-items: center;
     justify-content: space-between;
+    box-shadow: 10px 10px 50px rgba(0,0,0,0.2);
+
 
     .info__group {
         width: 30%;
+        // background-color: aliceblue;
     }
 
     .info__chart {
         width: 70%;
+        height: max-content;
+        display: flex;
+        align-items: center;
+
+        .info__chart__img{
+            object-fit: cover;
+            // background-color: #fff;
+            margin: auto;
+            margin-right: 0.5rem;
+        }
     }
 }

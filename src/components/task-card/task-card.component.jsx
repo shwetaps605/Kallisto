@@ -25,9 +25,9 @@ const TaskProgressCard = (props) => {
                 label: '# of tasks',
                 data: [numberOfLowPriorityTasks, numberOfMediumPriorityTasks, numberOfHighPriorityTasks],
                 backgroundColor: [
-                    'green',
-                    'yellow',
-                    'red'
+                    'rgb(255, 153, 153)',
+                    'rgb(240, 92, 141)',
+                    'rgb(172, 57, 115)'
                 ],
                 borderColor: [
                     'thistle',
@@ -55,12 +55,11 @@ const TaskProgressCard = (props) => {
     return (
         <div className="task__progress__card">
             <div className="info__group">
-                <p> {numberOfCompletedTasks} tasks Completed</p>
-                <p>{totalNumberOfTasks} tasks added</p>
+                {/* <p> {numberOfCompletedTasks} tasks Completed</p> */}
+                <h2>{totalNumberOfTasks} tasks added</h2>
             </div>
             <div className="info__chart">
-                <Doughnut data={data} />
-
+                <Doughnut className='info__chart__img' data={data} />
             </div>
 
         </div>
