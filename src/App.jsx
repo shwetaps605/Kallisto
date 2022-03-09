@@ -62,8 +62,11 @@ function App() {
                     (<div></div>)
             }
             <AdviceCard adviceData={advice} />
-            <TaskProgressCard></TaskProgressCard>
-            <AddTaskCard></AddTaskCard>
+            <div className="cards">
+                <TaskProgressCard></TaskProgressCard>
+                <AddTaskCard></AddTaskCard>
+            </div>
+
             <TaskListCard></TaskListCard>
             <Modal></Modal>
         </>
