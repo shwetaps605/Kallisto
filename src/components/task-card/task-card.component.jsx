@@ -29,7 +29,13 @@ const TaskProgressCard = (props) => {
                     'rgb(255, 153, 153)',
                     'rgb(240, 92, 141)',
                     'rgb(172, 57, 115)'
-                ]
+                ],
+                borderColor:[
+                    'rgb(255, 153, 153)',
+                    'rgb(240, 92, 141)',
+                    'rgb(172, 57, 115)'
+                ],
+                borderWidth:1
             },
         ],
     };
