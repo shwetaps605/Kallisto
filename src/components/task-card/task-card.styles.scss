@@ -60,14 +60,41 @@
     
 
     .info__chart {
+        position: relative;
+        top: 0;
+        transition: all ease-in-out 1s;
         
         .info__chart__img{
             margin: auto;
             margin-right: 0.5rem;
         }
+
+        // .info__chart__img::before {
+        //     content: ' ';
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 100%;
+        //     background-color: rgb(172, 36, 172);
+        // }
     }
 
     
+
+    .info__chart::after {
+        position: absolute;
+        transform: translateX(50%);
+        content: ' ';
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 2px;
+        display:flex;
+        margin-top: 1rem;
+        background-color: rgba(226, 170, 201, 0.899);
+        transition: all ease-in-out 1s;
+
+    }
+
 }
 
 .task__progress__card:hover {
@@ -80,7 +107,15 @@
     .info__group {
         font-size: 1.2rem;
         transform: translateY(10);
+    }
 
+    .info__chart{
+        transform: scale(0.85);
+        top: 0;
+    }
+
+    .info__chart::after {
+        opacity: 0;
     }
 
     
