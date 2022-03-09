@@ -22,6 +22,9 @@
         font-size: 1.25rem;
         color: rgba(255,255,255,0.2);
         pointer-events: none;
+        transition: 
+            transform ease-in 1s,
+            font-size ease-in 1s;
     }
 
     .content {
@@ -33,25 +36,26 @@
     }
 
     .info__group {
-        width: 30%;
+        width: 40%;
         transform: translateY(0);
-        transition: transform ease-out 1s;
+        font-size: 1rem;
+        transition: 
+            transform ease-in 1s,
+            font-size ease-in 1s;
 
        
         // background-color: aliceblue;
     }
 
-    .info__group:hover {
-        transform: translateY(10%);
-        transition: transform ease-out 1s;
-
-    }
+    
 
     .info__chart {
         width: 70%;
         height: max-content;
         display: flex;
         align-items: center;
+        transform: scale(1);
+        transition: transform ease-in 1s;
 
         .info__chart__img{
             object-fit: cover;
@@ -60,6 +64,28 @@
             margin-right: 0.5rem;
         }
     }
+
+    
+}
+
+.task__progress__card:hover {
+
+    .header {
+        font-size:1rem;
+        transform: translateY(5%);
+    }
+
+    .info__group {
+        font-size: 1.2rem;
+        transform: translateY(10%);
+
+    }
+
+    .info__chart {
+        transform: scale(0.95);
+    }
+
+
 }
 
 // .task__progress__card:hover {
