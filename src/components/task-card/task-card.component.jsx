@@ -51,21 +51,25 @@ const TaskProgressCard = (props) => {
         // const initialValue = {
         //     subtasks:[]
         // }
-        // const numberOfSubtasks = tasks.reduce((prevTask,currentTask) => prevTask.subtasks.length + currentTask.subtasks.length, initialValue)
+        setTotalNumberOfSubtasks(12)
+        setNumberOfCompletedTasks(2)
         // console.log(numberOfSubtasks);
         setNumberOfLowPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Low' }).length)
         setNumberOfMediumPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Medium' }).length)
         setNumberOfHighPriorityTasks(tasks.filter(task => { return task.taskPriority === 'High' }).length)
+        
     }
 
     return (
         <div className="task__progress__card">
             <div className="header">
-                <h1>Progress Tracker</h1>
+                <h1>Task Tracker</h1>
             </div>
             <div className="content">
                 <div className="info__group">
                     <h2>{totalNumberOfTasks} tasks added</h2>
+                    <h3>{totalNumberOfSubtasks} subtasks</h3>
+                    {/* <p>{totalNumberOfTasks - numberOfCompletedTasks} tasks pending...</p> */}
                 </div>
                 <div className="info__chart">
                     <Doughnut className='info__chart__img' data={data} />
