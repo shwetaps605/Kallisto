@@ -1,21 +1,33 @@
 .task__item {
     background-color: #ffdeb2;
-    border-radius: 5px;
+    border-radius:5px;
     padding-bottom: 1rem;
 
-    .task__item__header__box {
+    .task__item__header{
+        position: relative;
         padding: 0.5rem 0.5rem 0 0.5rem;
-        border-bottom: 1px solid rgb(200, 7, 7); 
         display: flex;
+        width: 100%;
         flex-direction: column;
+        
+        #date {
+            position: absolute;
+            top:0;
+            right:5px;
+            color: rgb(105, 102, 102);
+            font-size: 1rem;
+        }
 
-        .task__item__title {
+        .task__item__header__content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            // background-color: #20429e;
-            width: 100%;
+            margin-top: 1.5rem;
 
+            h3 {
+                font-size: 1.5rem;
+            }
+           
             button {
                 svg {
                     cursor: pointer;
@@ -26,31 +38,18 @@
             }
         }
         
-        
-
-        #date {
-            align-items: flex-end;
-            color: rgb(105, 102, 102);
-            font-size: 1rem;
-            margin: 0;
-        }
-
-        h3 {
-            font-size: 1.5rem;
+        &::after {
+            content: ' ';
+            height: 2px;
+            display: block;
+            border-top: 1px solid rgb(200, 7, 7); 
+            border-bottom: 1px solid rgb(200, 7, 7);
         }
     }
-
-    .red-line {
-        height: 2px;
-        border-bottom: 1px solid rgb(200, 7, 7); 
-    }
-
-
 
     .task__item__body__box {
         cursor: pointer;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding: 0 0.5rem;
         border-bottom: 0.2px solid blue;
         display: flex;
         text-align: left;

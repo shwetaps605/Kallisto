@@ -9,12 +9,13 @@ const AddTaskCard = (props) => {
     const titleRef = useRef()
     const priorityRef = useRef()
     const [date, setDate] = useState("")
-    const [showAddFields, setShowAddFields] = useState(true)
+    const [showAddFields, setShowAddFields] = useState(false)
     const { addTask } = useTasks()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setShowAddFields(false)
+        console.log("date is", moment().format('LL'));
         setDate(moment().format('LL'))
         addTask({
             title: titleRef.current.value,
@@ -29,8 +30,6 @@ const AddTaskCard = (props) => {
     return (
         <>
             <div className="add__task__card__container">
-
-
                 {
                     showAddFields ?
                         <div className="add__task__card__body">
@@ -41,29 +40,24 @@ const AddTaskCard = (props) => {
                                 </svg>
                             </button>
 
-                            <form onSubmit={handleSubmit}>
-
-                                <div className='form-fields'>
-
-                                    <div className="form-group">
-                                        <label>Title</label>
-                                        <input type="text" ref={titleRef} name="taskTitle" />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label>Priority</label>
-                                        <select ref={priorityRef}>
-                                            <option>Low</option>
-                                            <option>Medium</option>
-                                            <option>High</option>
-                                        </select>
-                                    </div>
-
-                                    <input type="submit" name="Add" id="add-task-button" value="Add" />
-
+                            <form className='form-fields' onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label>Title</label>
+                                    <input type="text" ref={titleRef} name="taskTitle" />
                                 </div>
 
+                                <div className="form-group">
+                                    <label>Priority</label>
+                                    <select ref={priorityRef}>
+                                        <option>Low</option>
+                                        <option>Medium</option>
+                                        <option>High</option>
+                                    </select>
+                                </div>
+
+                                <input type="submit" name="Add" id="add-task-button" value="Add" />
                             </form>
+
                         </div> :
 
                         <div className="add__task__card__header">
@@ -79,12 +73,6 @@ const AddTaskCard = (props) => {
 
 
                 }
-
-
-
-
-
-
 
             </div>
         </>

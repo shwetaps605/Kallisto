@@ -37,18 +37,16 @@ const TaskItem = ({ task, handleAddSubtask }) => {
     return (
         <div className="task__item">
 
-            <div className="task__item__header__box" onDoubleClick={() => handleRemoveTask(task.taskId)}>
+            <div className="task__item__header" onDoubleClick={() => handleRemoveTask(task.taskId)}>
                 <p id='date'>{task.createdAt}</p>
-                <div className="task__item__title">
+                <div className="task__item__header__content">
                     <h3>{task.taskTitle}</h3>
                     <button>
                         <svg onClick={() => handleAddSubtask(task.taskId)} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z" /></svg>
                     </button>
                 </div>
+
             </div>
-
-            <div className="red-line"></div>
-
 
             {
                 task.subtasks.length == 0 &&

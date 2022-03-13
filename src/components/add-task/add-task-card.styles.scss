@@ -1,26 +1,25 @@
 button {
     background: none;
     border: none;
-   
-    
 }
 
 .add__task__card__container {
-    width:50%;
-    background-color: #f37ea5;
+    max-width:600px;
+    background-color: rgba(77, 10, 24, 0.226);
+    box-shadow: 10px 10px 50px rgba(0,0,0,0.2);
+    border-top: 1.5px solid rgba(255,255,255,0.5); 
+    border-left: 1.5px solid rgba(255,255,255,0.5); 
+    backdrop-filter: blur(5px );
     margin:auto;
-    margin-top: 3rem;
     padding: 1rem;
     border-radius:15px;
     color: #fff;
     font-family: 'Bitter', serif;
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    // box-shadow: 0 0 10px 0 rgb(85, 80, 75);
-
+   
     .add__task__card__header {
         display: flex;
+        position: relative;
         justify-content: space-between;
         width: 100%;
         font-size: 2rem;
@@ -29,21 +28,22 @@ button {
             svg {
                 fill: #fff;
                 cursor: pointer;
+                transition: transform ease-in 150ms;
             }
-        }
-        
 
-        
+         &:hover {
+             transform: translateY(-10);
+         }
+        }
+
     }
 
     .add__task__card__body {
         width: 100%;
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         
-
         button {
-            display: inline;
-            float: right;
+            // float: right;
             margin-bottom: 1rem;
 
             svg {
@@ -55,41 +55,31 @@ button {
         form {
             margin-top: 1.5rem;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-
-           
-    
-            .form-fields {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                
         
                 .form-group {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     padding: 0.75rem;
-
+                    
                     label {
                         font-size: 1rem;
                     }
                    
                     input {
-                        height: 30px;
+                        min-height: 30px;
                         margin-top: 0.5rem;
                         font-size: 1.25rem;
                         padding: 0.25rem;
                     }
     
                     select {
-                        height: 40px;
+                        min-height: 40px;
                         margin-top: 0.5rem;
                         font-size: 1rem;
                         font-size: 1rem;
-
                         
                         option {
                             font-size: 1rem;
@@ -100,25 +90,39 @@ button {
 
                 #add-task-button {
                     cursor: pointer;
-                    margin-top: 2rem;
-                    height: 40px;
-                    width: 20%;
-                    padding-left: 1rem;
-                    padding-right: 1rem;
-                    background-color: #f06f9a;
-                    border: none;
+                    margin-top: 1.5rem;
+                    min-height: 40px;
+                    min-width: 100px;
+                    background-color: #d34f70;
                     font-size: 1rem;
                     color: #fff;
                     border-radius:15px;
-
-                    border: 1px solid #fff;
-                    
+                    border: 1px solid #fff;    
             }
-            }
+            
     
         }
 
     }
+
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     background-color: rgb(148, 43, 43);
+    //     display: block;
+    //     height: 100%;
+    //     width: 100%;
+    //     left:0;
+    //     transform: translateX(-100%);
+    //     transition: all ease-in 300ms;
+    //     border-radius:15px;
+    //     transform: scale(0);
+
+    // }
+
+    // &:hover::before {
+    //     transform: translateX(0);
+    // }
 
 
     

@@ -5,7 +5,7 @@
     flex-direction: column;
     padding: 1rem;
     margin: auto;
-    width: 500px;
+    max-width: 600px;
     border-radius:15px;
     // align-items: center;
     justify-content: space-between;
@@ -14,7 +14,7 @@
     border-left: 1.5px solid rgba(255,255,255,0.5); 
     backdrop-filter: blur(5px );
     transition: 0.5s;
-    height: 250px;
+    min-height: 100px;
     margin-bottom: 5rem;
 
     .header{
@@ -82,15 +82,15 @@
 
     .info__chart::after {
         position: absolute;
-        transform: translateX(50%);
+        bottom:15;
         content: ' ';
         align-items: center;
         justify-content: center;
-        width: 50%;
-        height: 2px;
+        width:80%;
+        height: 3px;
         display:flex;
         margin-top: 1rem;
-        background-color: rgba(226, 170, 201, 0.899);
+        background-color: rgba(134, 125, 130, 0.28);
         transition: all ease-in-out 1s;
 
     }
@@ -101,7 +101,7 @@
 
     .header {
         font-size:1rem;
-        transform: translateY(5);
+        transform: translateY(10);
     }
 
     .info__group {
@@ -111,22 +111,10 @@
 
     .info__chart{
         transform: scale(0.85);
-        top: 0;
     }
 
     .info__chart::after {
         opacity: 0;
     }
 
-    
-
-
 }
-
-// .task__progress__card:hover {
-//     transform: rotateY(2deg);
-//     .content{
-//         transform: translateY(0px);
-//         opacity: 1;
-//     }
-// }
