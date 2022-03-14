@@ -45,29 +45,22 @@ const TaskItem = ({ task, handleAddSubtask }) => {
                         <svg onClick={() => handleAddSubtask(task.taskId)} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z" /></svg>
                     </button>
                 </div>
-
             </div>
 
-            {
-                task.subtasks.length == 0 &&
-                <div className="task__item__body__box default">
-                    <p>No subtasks</p>
-                </div>
-            }
-
-            {
-                task.subtasks.length > 0 && task.subtasks.map(subtask => (
-                    <div className="task__item__body__box" onDoubleClick={() => handleSubTaskDelete(task.taskId, subtask.subtaskId, subtask.subtaskCompletionStatus)}>
-                        {
-                            subtask.subtaskCompletionStatus ?
-                                <strike><p className="subtitle__text striked">{subtask.subtaskTitle}</p></strike> :
-                                <p className="subtitle__text">{subtask.subtaskTitle}</p>
-                        }
-                        <Checkbox value={subtask.subtaskTitle} checked={subtask.subtaskCompletionStatus} onChange={() => handleSubtaskCompleteAction(task.taskId, subtask.subtaskId)}></Checkbox>
-                    </div>
-                ))
-
-            }
+            <div className="task__item__content">
+                {
+                    task.subtasks.length > 0 && task.subtasks.map(subtask => (
+                        <div className="subtask" onDoubleClick={() => handleSubTaskDelete(task.taskId, subtask.subtaskId, subtask.subtaskCompletionStatus)}>
+                            {
+                                subtask.subtaskCompletionStatus ?
+                                    <strike><p className="subtitle__text striked">{subtask.subtaskTitle}</p></strike> :
+                                    <p className="subtitle__text">{subtask.subtaskTitle}</p>
+                            }
+                            <Checkbox value={subtask.subtaskTitle} checked={subtask.subtaskCompletionStatus} onChange={() => handleSubtaskCompleteAction(task.taskId, subtask.subtaskId)}></Checkbox>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
 }

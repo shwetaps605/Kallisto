@@ -1,0 +1,56 @@
+.pomodoro__card__container {
+    max-width:600px;
+    background-color: rgba(77, 10, 24, 0.226);
+    box-shadow: 10px 10px 50px rgba(0,0,0,0.2);
+    border-top: 1.5px solid rgba(255,255,255,0.5); 
+    border-left: 1.5px solid rgba(255,255,255,0.5); 
+    backdrop-filter: blur(5px );
+    margin:auto;
+    border-radius:15px;
+    color: #fff;
+    font-family: 'Bitter', serif;
+    display: flex;
+    margin-top: 5rem;
+    
+    .pomodoro__card__header {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 1rem;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 2rem;
+
+        button {
+            svg {
+                fill: #fff;
+                cursor: pointer;
+                transition: transform ease-in 1s;
+                transform: translateX(-10);
+            }
+            svg:hover {
+                transform: translateX(0);
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: rgb(206, 110, 150);
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: all ease-in-out .5s;
+            z-index: -1;
+        }
+    
+        &:hover::before {
+            border-radius: 15px;
+            transform: scaleX(1);
+        }
+
+    }
+}

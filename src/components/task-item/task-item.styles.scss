@@ -1,5 +1,8 @@
 .task__item {
-    background-color: #ffdeb2;
+    background-color: rgb(255, 222, 178);
+    box-shadow: 10px 10px 50px rgba(0,0,0,0.2);
+    border-top: 1.5px solid rgba(255,255,255,0.5); 
+    border-left: 1.5px solid rgba(255,255,255,0.5); 
     border-radius:5px;
     padding-bottom: 1rem;
 
@@ -7,7 +10,6 @@
         position: relative;
         padding: 0.5rem 0.5rem 0 0.5rem;
         display: flex;
-        width: 100%;
         flex-direction: column;
         
         #date {
@@ -15,14 +17,14 @@
             top:0;
             right:5px;
             color: rgb(105, 102, 102);
-            font-size: 1rem;
+            font-size: .75rem;
         }
 
         .task__item__header__content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1.5rem;
+            margin-top:2rem;
 
             h3 {
                 font-size: 1.5rem;
@@ -31,9 +33,11 @@
             button {
                 svg {
                     cursor: pointer;
+                    transition: all ease-in-out 300ms;
                 }
                 svg:hover {
                     fill:#187e29;
+                    transform: rotate(90deg);
                 }
             }
         }
@@ -47,19 +51,16 @@
         }
     }
 
-    .task__item__body__box {
+    .subtask {
         cursor: pointer;
-        padding: 0 0.5rem;
-        border-bottom: 0.2px solid blue;
+        padding: 0 .5rem;
         display: flex;
-        text-align: left;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 1px solid rgb(40, 23, 194);
 
         .subtitle__text {
             font-size: 1rem;
-            // background-color: #ffdeb2;
-            width: 80%;
         }
 
         .subtitle__text.striked {
@@ -67,23 +68,7 @@
             color: #20429e;;
         }
 
-        svg {
-            padding: 0.5rem;
-            cursor: pointer;
-            opacity: 0.5;
-        }
-
-        svg:hover {
-            opacity: 1;
-            fill:  #187e29;;
-        }
+       
     }
 
-    .task__item__body__box.default {
-        p {
-            color: rgb(105, 102, 102);
-        }
-    }
-
-    
 }

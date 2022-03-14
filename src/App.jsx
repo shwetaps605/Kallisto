@@ -6,6 +6,7 @@ import AdviceCard from './components/advice-card/advice-card.component';
 import TaskListCard from './components/task-list/task-list-card.component';
 import Modal from './components/modal/modal.component';
 import AddTaskCard from './components/add-task/add-task-card.component'
+import PomodoroCard from './components/pomodoro-card/pomodoro-card.component';
 import TaskProgressCard from './components/task-card/task-card.component';
 import { useTasks } from './contexts/TaskContexts';
 import './App.css'
@@ -65,6 +66,7 @@ function App() {
             <div className="cards">
                 <TaskProgressCard></TaskProgressCard>
                 <AddTaskCard></AddTaskCard>
+                <PomodoroCard />
             </div>
 
             <TaskListCard></TaskListCard>
