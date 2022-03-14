@@ -24,7 +24,6 @@ const AddTaskCard = (props) => {
         })
         titleRef.current.value = ""
         priorityRef.current.value = "Low"
-
     }
 
     return (
@@ -60,23 +59,17 @@ const AddTaskCard = (props) => {
 
                         </div> :
 
-                        <div className="add__task__card__header">
-
+                        <div className="add__task__card__header" onClick={() => setShowAddFields(!showAddFields)}>
                             <h3>Add Task</h3>
-                            <button className='svg-button' onClick={() => setShowAddFields(!showAddFields)}>
+                            <button className='svg-button' >
                                 <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M36.4717 20.0001L23.9267 30.3917L25 31.6667L40 19.1317L25 6.66675L23.925 7.94008L36.4733 18.3334H0V20.0001H36.4717Z" />
                                 </svg>
                             </button>
-
                         </div>
-
-
                 }
-
             </div>
         </>
-
     )
 }
 

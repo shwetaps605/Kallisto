@@ -9,17 +9,20 @@ const TaskItem = ({ task, handleAddSubtask }) => {
 
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         updateSubtask(taskId, subtaskId)
+        const subtasks = task.subtasks;
+        const incompleteSubtask = subtasks.filter((subtask) => { return subtask.subtaskCompletionStatus === false })
+        if (incompleteSubtask.length === 0 ) {
+            updateTaskStatus(taskId)
+        }
+        
     }
 
     const handleRemoveTask = (taskId) => {
-        const subtasks = task.subtasks;
-        const incompleteSubtask = subtasks.filter((subtask) => { return subtask.subtaskCompletionStatus === false })
-        if (incompleteSubtask.length > 0) {
-            alert('This task has incomplete tasks, Complete them first')
-        } else {
-            updateTaskStatus(taskId)
+        if(task.isComplete || task.subtasks.length === 0){
             deleteTask(taskId)
+            return
         }
+        alert('This task has incomplete tasks. Complete them first')
     }
 
     const handleSubTaskDelete = (taskId, subtaskId, status) => {
@@ -36,7 +39,6 @@ const TaskItem = ({ task, handleAddSubtask }) => {
 
     return (
         <div className="task__item">
-
             <div className="task__item__header" onDoubleClick={() => handleRemoveTask(task.taskId)}>
                 <p id='date'>{task.createdAt}</p>
                 <div className="task__item__header__content">
