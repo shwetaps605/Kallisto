@@ -30,12 +30,12 @@ const TaskProgressCard = (props) => {
                     'rgb(240, 92, 141)',
                     'rgb(172, 57, 115)'
                 ],
-                borderColor:[
+                borderColor: [
                     'rgb(255, 153, 153)',
                     'rgb(240, 92, 141)',
                     'rgb(172, 57, 115)'
                 ],
-                borderWidth:1
+                borderWidth: 1
             },
         ],
     };
@@ -48,16 +48,20 @@ const TaskProgressCard = (props) => {
 
     const getTotalNumberOfTasks = () => {
         setTotalNumberOfTasks(tasks.length)
-        // const initialValue = {
-        //     subtasks:[]
-        // }
-        setTotalNumberOfSubtasks(12)
+        var subtaskCount = 0
+        tasks.forEach(task => {
+            if (task.subtasks.length) {
+                subtaskCount = subtaskCount + task.subtasks.length
+            }
+        })
+        // console.log("final value", initCount);
+        setTotalNumberOfSubtasks(subtaskCount)
         setNumberOfCompletedTasks(2)
         // console.log(numberOfSubtasks);
         setNumberOfLowPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Low' }).length)
         setNumberOfMediumPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Medium' }).length)
         setNumberOfHighPriorityTasks(tasks.filter(task => { return task.taskPriority === 'High' }).length)
-        
+
     }
 
     return (

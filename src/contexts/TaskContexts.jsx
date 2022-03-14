@@ -26,7 +26,7 @@ const TasksProvider = ({ children }) => {
         setModalState(false)
     }
 
-  
+
 
     const addTask = ({ title, priority, date }) => {
         const newTask = {
@@ -34,7 +34,8 @@ const TasksProvider = ({ children }) => {
             taskTitle: title,
             taskPriority: priority,
             createdAt: date,
-            subtasks: []
+            subtasks: [],
+            isComplete: false
         }
 
         setTasks(prevTasks => {
@@ -58,6 +59,13 @@ const TasksProvider = ({ children }) => {
                 setTasks(newTasks)
             }
         })
+    }
+
+    const updateTaskStatus = (id) => {
+        console.log(id)
+        const task = tasks.filter(task => { return task.taskId === id })
+        task[0].isComplete = true
+
     }
 
 
@@ -108,7 +116,8 @@ const TasksProvider = ({ children }) => {
             updateSubtask,
             deleteTask,
             deleteSubtask,
-            saveTaskId
+            saveTaskId,
+            updateTaskStatus
         }}>
             {children}
         </TasksContext.Provider>

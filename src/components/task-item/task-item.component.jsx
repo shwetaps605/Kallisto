@@ -5,7 +5,7 @@ import Checkbox from "../checkbox/checkbox.component"
 
 const TaskItem = ({ task, handleAddSubtask }) => {
 
-    const { updateSubtask, deleteSubtask, deleteTask } = useTasks()
+    const { updateSubtask, deleteSubtask, deleteTask, updateTaskStatus } = useTasks()
 
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         updateSubtask(taskId, subtaskId)
@@ -17,12 +17,12 @@ const TaskItem = ({ task, handleAddSubtask }) => {
         if (incompleteSubtask.length > 0) {
             alert('This task has incomplete tasks, Complete them first')
         } else {
-            deleteTask(taskId)
+            updateTaskStatus(taskId)
+            // deleteTask(taskId)
         }
     }
 
     const handleSubTaskDelete = (taskId, subtaskId, status) => {
-        console.log("Subtask deletion started")
         if (!status) {
             alert('This subtask is incomplete')
             return
