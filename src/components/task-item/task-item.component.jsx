@@ -18,7 +18,7 @@ const TaskItem = ({ task, handleAddSubtask }) => {
             alert('This task has incomplete tasks, Complete them first')
         } else {
             updateTaskStatus(taskId)
-            // deleteTask(taskId)
+            deleteTask(taskId)
         }
     }
 

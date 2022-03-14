@@ -62,9 +62,11 @@ const TasksProvider = ({ children }) => {
     }
 
     const updateTaskStatus = (id) => {
-        console.log(id)
-        const task = tasks.filter(task => { return task.taskId === id })
-        task[0].isComplete = true
+        setTasks(prevTasks => {
+            let index = prevTasks.findIndex( task => task.taskId === id)
+            prevTasks[index].isComplete = true;
+            return [...prevTasks]
+        })
 
     }
 
