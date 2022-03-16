@@ -53,4 +53,27 @@
         }
 
     }
+
+    .pomodoro__card__body {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 1rem;
+
+        button {
+            margin-bottom: 1rem;
+
+            svg {
+                fill: #fff;
+                cursor: pointer;
+            }
+        }
+
+        .pomodoro__form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            
+        }
+    }
 }

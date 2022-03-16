@@ -6,6 +6,7 @@ import Checkbox from "../checkbox/checkbox.component"
 const TaskItem = ({ task, handleAddSubtask }) => {
 
     const { updateSubtask, deleteSubtask, deleteTask, updateTaskStatus } = useTasks()
+    
 
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         updateSubtask(taskId, subtaskId)
@@ -40,6 +41,9 @@ const TaskItem = ({ task, handleAddSubtask }) => {
     return (
         <div className="task__item">
             <div className="task__item__header" onDoubleClick={() => handleRemoveTask(task.taskId)}>
+                {
+                    !task.isComplete ? <p>Not done</p> : <p>DONE</p>
+                }
                 <p id='date'>{task.createdAt}</p>
                 <div className="task__item__header__content">
                     <h3>{task.taskTitle}</h3>
