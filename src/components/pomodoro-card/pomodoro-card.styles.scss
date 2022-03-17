@@ -42,7 +42,7 @@ input[type=number]::-webkit-outer-spin-button {
         &::before {
             content: '';
             position: absolute;
-            background-color: rgb(126, 155, 218);
+            background-color: rgb(179, 111, 148);
             top: 0;
             left: 0;
             bottom: 0;
@@ -85,7 +85,7 @@ input[type=number]::-webkit-outer-spin-button {
                 align-items: center;
                 margin-bottom: 1.5rem;
 
-                .form-group{
+                .form-group {
                     font-size: 0.75rem;
                     display: flex;
                     flex-direction: column;
@@ -102,7 +102,6 @@ input[type=number]::-webkit-outer-spin-button {
                         min-height: 50px;
                         max-width: 60px;
                         padding: .2rem 0 .2rem .75rem;
-
                     }
 
                     input:focus {
@@ -110,8 +109,21 @@ input[type=number]::-webkit-outer-spin-button {
                         outline: none;
                         background-color: thistle;
                     }
+                
                 }
             }
+
+            #start-pomodoro-button {
+                cursor: pointer;
+                margin-top: 1.5rem;
+                min-height: 40px;
+                min-width: 100px;
+                background-color: #d34f70;
+                font-size: 1rem;
+                color: #fff;
+                border-radius:15px;
+                border: 1px solid #fff;    
+        }
 
             
         }

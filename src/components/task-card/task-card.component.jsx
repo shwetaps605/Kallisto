@@ -65,21 +65,36 @@ const TaskProgressCard = (props) => {
     }
 
     return (
-        <div className="task__progress__card">
-            <div className="header">
-                <h1>Task Tracker</h1>
+        <div className="task__cards">
+
+            <div className="section__toggles">
+                <button>Completion Status</button>
+                <button>Check Distribution</button>
             </div>
-            <div className="content">
-                <div className="info__group">
-                    <h2>{totalNumberOfTasks} tasks added</h2>
-                    <h3>{totalNumberOfSubtasks} subtasks</h3>
-                    {/* <p>{totalNumberOfTasks - numberOfCompletedTasks} tasks pending...</p> */}
+
+            <div className="task__progress__card">
+                <div className="header">
+                    <h1>Task Tracker</h1>
                 </div>
-                <div className="info__chart">
-                    <Doughnut className='info__chart__img' data={data} />
+                <div className="content">
+                    <div className="info__group">
+                        <h2>{totalNumberOfTasks} tasks added</h2>
+                        <h3>{totalNumberOfSubtasks} subtasks</h3>
+                        {/* <p>{totalNumberOfTasks - numberOfCompletedTasks} tasks pending...</p> */}
+                    </div>
+                    <div className="info__chart">
+                        <Doughnut className='info__chart__img' data={data} />
+                    </div>
+                </div>
+                <div className="completion__status__content">
+                    
                 </div>
             </div>
+
+            
+
         </div>
+
     )
 }
 
