@@ -30,12 +30,20 @@ const PomodoroCard = (props) => {
                         <form className='pomodoro__form'>
                             <div className="form-group">
                                 <label>Pomodoro duration</label>
-                                <input type="number" value={10} step={10} name='pomodoro-time' />
+                                <input type="number" min={20} max={60} step={5} name='pomodoro-time' />
                             </div>
                             <p>:</p>
                             <div className="form-group">
-                                <label>Break duration</label>
-                                <input type="number" value={10} step={10} name='pomodoro-time' />
+                                <label>Short break duration</label>
+                                <input type="number" min={10} max={30} step={5} name='break-time' />
+                            </div>
+                            <div className="form-group">
+                                <label>Long break duration</label>
+                                <input type="number" min={10} max={30} step={5} name='break-time' />
+                            </div>
+                            <div className="form-group">
+                                <label>Number of rounds</label>
+                                <input type="number" min={10} max={30} step={5} name='break-time' />
                             </div>
                         </form>
                     </div>
