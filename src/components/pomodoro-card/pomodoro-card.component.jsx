@@ -28,24 +28,35 @@ const PomodoroCard = (props) => {
                         </button>
 
                         <form className='pomodoro__form'>
-                            <div className="form-group">
-                                <label>Pomodoro duration</label>
-                                <input type="number" min={20} max={60} step={5} name='pomodoro-time' />
+                            <div className="form-control">
+                                <div className="form-group">
+                                    <label>Pomodoro duration</label>
+                                    <input type="number" min={20} max={60} step={5} name='pomodoro-time' />
+                                </div>
+                                <p>:</p>
+                                <div className="form-group">
+                                    <label>Short break duration</label>
+                                    <input type="number" min={10} max={30} step={5} name='break-time' />
+                                </div>
+                                <div className="form-group">
+                                    <label>Long break duration</label>
+                                    <input type="number" min={10} max={30} step={5} name='break-time' />
+                                </div>
+                                <div className="form-group">
+                                    <label>Number of rounds</label>
+                                    <input type="number" min={10} max={30} step={5} name='break-time' />
+                                </div>
+
                             </div>
-                            <p>:</p>
-                            <div className="form-group">
-                                <label>Short break duration</label>
-                                <input type="number" min={10} max={30} step={5} name='break-time' />
-                            </div>
-                            <div className="form-group">
-                                <label>Long break duration</label>
-                                <input type="number" min={10} max={30} step={5} name='break-time' />
-                            </div>
-                            <div className="form-group">
-                                <label>Number of rounds</label>
-                                <input type="number" min={10} max={30} step={5} name='break-time' />
-                            </div>
+
+
+                            <input type="submit" name="Start" id="start-pomodoro-button" value="Start" />
+
                         </form>
+
+                        <div className="message">
+
+                        </div>
                     </div>
             }
         </div>
