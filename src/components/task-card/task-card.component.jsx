@@ -86,9 +86,9 @@ const TaskProgressCard = (props) => {
                         <Doughnut className='info__chart__img' data={data} />
                     </div>
                 </div>
-                <div className="completion__status__content">
+                {/* <div className="completion__status__content">
                     
-                </div>
+                </div> */}
             </div>
 
             
