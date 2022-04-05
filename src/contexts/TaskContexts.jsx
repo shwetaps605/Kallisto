@@ -53,6 +53,7 @@ const TasksProvider = ({ children }) => {
 
         tasks.map((task, index) => {
             if (task.taskId === taskId) {
+                task.isComplete = false
                 task.subtasks.push(newSubTask)
                 const newTasks = [...tasks]
                 newTasks[index] = task

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import './task-item.styles.scss'
 import { useTasks } from "../../contexts/TaskContexts"
 import Checkbox from "../checkbox/checkbox.component"
@@ -33,10 +33,6 @@ const TaskItem = ({ task, handleAddSubtask }) => {
         }
         deleteSubtask(taskId, subtaskId)
     }
-
-
-
-
 
     return (
         <div className="task__item">
