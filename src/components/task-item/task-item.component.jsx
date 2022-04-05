@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import './task-item.styles.scss'
 import { useTasks } from "../../contexts/TaskContexts"
 import Checkbox from "../checkbox/checkbox.component"
@@ -7,7 +7,6 @@ const TaskItem = ({ task, handleAddSubtask }) => {
 
     const { updateSubtask, deleteSubtask, deleteTask, updateTaskStatus } = useTasks()
     
-
     const handleSubtaskCompleteAction = (taskId, subtaskId) => {
         updateSubtask(taskId, subtaskId)
         const subtasks = task.subtasks;
@@ -15,7 +14,6 @@ const TaskItem = ({ task, handleAddSubtask }) => {
         if (incompleteSubtask.length === 0 ) {
             updateTaskStatus(taskId)
         }
-        
     }
 
     const handleRemoveTask = (taskId) => {

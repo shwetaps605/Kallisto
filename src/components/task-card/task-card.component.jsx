@@ -17,6 +17,7 @@ const TaskProgressCard = (props) => {
     const [numberOfLowPriorityTasks, setNumberOfLowPriorityTasks] = useState(0)
     const [numberOfMediumPriorityTasks, setNumberOfMediumPriorityTasks] = useState(0)
     const [numberOfHighPriorityTasks, setNumberOfHighPriorityTasks] = useState(0)
+    const [defaultChart, setDefaultChart] = useState('STATUS')
 
 
     const data = {
@@ -40,6 +41,25 @@ const TaskProgressCard = (props) => {
         ],
     };
 
+    const data2 = {
+        labels: ['Complete', 'Incomplete'],
+        datasets: [
+            {
+                label: '# of tasks',
+                data: [numberOfCompletedTasks, (totalNumberOfTasks - numberOfCompletedTasks)],
+                backgroundColor: [
+                    'rgb(255, 153, 153)',
+                    'rgb(240, 92, 141)',
+                ],
+                borderColor: [
+                    'rgb(255, 153, 153)',
+                    'rgb(240, 92, 141)',
+                ],
+                borderWidth: 1
+            },
+        ],
+    };
+
 
     useEffect(() => {
         getTotalNumberOfTasks()
@@ -54,8 +74,11 @@ const TaskProgressCard = (props) => {
                 subtaskCount = subtaskCount + task.subtasks.length
             }
         })
+
+        const completedTasks = tasks.filter(task => task.isComplete === true)
+
+        setNumberOfCompletedTasks(completedTasks.length)
         setTotalNumberOfSubtasks(subtaskCount)
-        setNumberOfCompletedTasks(2)
         setNumberOfLowPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Low' }).length)
         setNumberOfMediumPriorityTasks(tasks.filter(task => { return task.taskPriority === 'Medium' }).length)
         setNumberOfHighPriorityTasks(tasks.filter(task => { return task.taskPriority === 'High' }).length)
@@ -66,29 +89,36 @@ const TaskProgressCard = (props) => {
         <div className="task__cards">
 
             <div className="section__toggles">
-                <button>Completion Status</button>
-                <button>Check Distribution</button>
+                <button onClick={() => setDefaultChart('STATUS')}>Completion Status</button>
+                <button onClick={() => setDefaultChart('DISTRIBUTION')}>Check Distribution</button>
             </div>
 
             <div className="task__progress__card">
                 <div className="header">
                     <h1>Task Tracker</h1>
                 </div>
+
+
                 <div className="content">
                     <div className="info__group">
                         <h2>{totalNumberOfTasks} tasks added</h2>
                         <h3>{totalNumberOfSubtasks} subtasks</h3>
                     </div>
-                    <div className="info__chart">
-                        <Doughnut className='info__chart__img' data={data} />
-                    </div>
-                </div>
-                <div className="completion__status__content">
-                    
-                </div>
-            </div>
+                    {
+                        defaultChart === 'DISTRIBUTION' ?
+                            <div className="info__chart">
+                                <Doughnut className='info__chart__img' data={data} />
+                            </div> :
 
-            
+                            <div className="info__chart">
+                                <Doughnut className='info__chart__img' data={data2} />
+                            </div>
+
+                    }
+
+                </div>
+
+            </div>
 
         </div>
 
