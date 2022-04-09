@@ -6,6 +6,18 @@ const PomodoroCard = (props) => {
     const [pomodoroDuration, setPomodorDuration] = useState(0)
     const [breakDuration, setBreakDuration] = useState(0)
     const [toggleShowFields, setToggleShowFields] = useState(true)
+    const [startPomodoro, setStartPomodoro] = useState(false)
+
+
+
+
+
+
+    const handleSubmit = () => {
+        setStartPomodoro(true)
+        const seconds = 59
+        
+    }
 
     return (
         <div className="pomodoro__card__container">
@@ -44,7 +56,7 @@ const PomodoroCard = (props) => {
                                 </div>
                                 <div className="form-group">
                                     <label>Number of rounds</label>
-                                    <input type="number" min={10} max={30} step={5} name='break-time' />
+                                    <input type="number" min={1} max={5} step={1} name='break-time' />
                                 </div>
 
                             </div>
@@ -53,6 +65,14 @@ const PomodoroCard = (props) => {
                             <input type="submit" name="Start" id="start-pomodoro-button" value="Start" />
 
                         </form>
+
+                        {
+                            startPomodoro &&
+                            <div className="pomodoro__start__container">
+                                <p>{pomodoroDuration}</p>
+
+                            </div>
+                        }
 
                         <div className="message">
 
