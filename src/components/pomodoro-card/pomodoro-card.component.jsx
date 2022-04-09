@@ -4,7 +4,9 @@ import './pomodoro-card.styles.scss'
 const PomodoroCard = (props) => {
 
     const [pomodoroDuration, setPomodorDuration] = useState(0)
-    const [breakDuration, setBreakDuration] = useState(0)
+    const [shortBreakDuration, setShortBreakDuration] = useState(0)
+    const [longBreakDuration, setLongBreakDuration] = useState(0)
+    const [rounds, setRounds] = useState(0)
     const [toggleShowFields, setToggleShowFields] = useState(true)
     const [startPomodoro, setStartPomodoro] = useState(false)
 
@@ -16,7 +18,7 @@ const PomodoroCard = (props) => {
     const handleSubmit = () => {
         setStartPomodoro(true)
         const seconds = 59
-        
+
     }
 
     return (
@@ -43,12 +45,28 @@ const PomodoroCard = (props) => {
                             <div className="form-control">
                                 <div className="form-group">
                                     <label>Pomodoro duration</label>
-                                    <input type="number" min={20} max={60} step={5} name='pomodoro-time' />
+                                    <input
+                                        type="number"
+                                        min={20}
+                                        max={60}
+                                        step={5}
+                                        name='pomodoro-time'
+                                        value={pomodoroDuration}
+                                        onChange={(e) => setPomodorDuration(e.target.value)}
+                                    />
                                 </div>
                                 <p>:</p>
                                 <div className="form-group">
                                     <label>Short break duration</label>
-                                    <input type="number" min={10} max={30} step={5} name='break-time' />
+                                    <input
+                                        type="number"
+                                        min={10}
+                                        max={30}
+                                        step={5}
+                                        name='break-time'
+                                        value={breakDuration}
+                                        onChange={(e) => setBreakDuration(e.target.value)} 
+                                    />
                                 </div>
                                 <div className="form-group">
                                     <label>Long break duration</label>
