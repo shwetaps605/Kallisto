@@ -9,15 +9,25 @@ const PomodoroCard = (props) => {
     const [rounds, setRounds] = useState(0)
     const [toggleShowFields, setToggleShowFields] = useState(true)
     const [startPomodoro, setStartPomodoro] = useState(false)
+    const [seconds, setSeconds] = useState(59)
 
 
 
-
-
-
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         setStartPomodoro(true)
-        const seconds = 59
+        console.log(typeof(pomodoroDuration))
+        while(pomodoroDuration > 0){
+            console.log("TIMER WHILE LOOP")
+            setInterval( () => {
+                setSeconds(seconds-1)
+                if(seconds === 0 ){
+                    setPomodorDuration(pomodoroDuration-1)
+                }
+            },1000)
+        }
+        
+        
 
     }
 
@@ -35,61 +45,72 @@ const PomodoroCard = (props) => {
                     </div> :
 
                     <div className="pomodoro__card__body">
+
                         <button onClick={() => setToggleShowFields(false)}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.117 12L9.644 5.765L9 5L0 12.521L9 20L9.645 19.236L2.116 13H24V12H2.117Z" />
                             </svg>
                         </button>
 
-                        <form className='pomodoro__form'>
-                            <div className="form-control">
-                                <div className="form-group">
-                                    <label>Pomodoro duration</label>
-                                    <input
-                                        type="number"
-                                        min={20}
-                                        max={60}
-                                        step={5}
-                                        name='pomodoro-time'
-                                        value={pomodoroDuration}
-                                        onChange={(e) => setPomodorDuration(e.target.value)}
-                                    />
-                                </div>
-                                <p>:</p>
-                                <div className="form-group">
-                                    <label>Short break duration</label>
-                                    <input
-                                        type="number"
-                                        min={10}
-                                        max={30}
-                                        step={5}
-                                        name='break-time'
-                                        value={breakDuration}
-                                        onChange={(e) => setBreakDuration(e.target.value)} 
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Long break duration</label>
-                                    <input type="number" min={10} max={30} step={5} name='break-time' />
-                                </div>
-                                <div className="form-group">
-                                    <label>Number of rounds</label>
-                                    <input type="number" min={1} max={5} step={1} name='break-time' />
-                                </div>
-
-                            </div>
-
-
-                            <input type="submit" name="Start" id="start-pomodoro-button" value="Start" />
-
-                        </form>
-
                         {
-                            startPomodoro &&
-                            <div className="pomodoro__start__container">
-                                <p>{pomodoroDuration}</p>
+                            startPomodoro ?
+                                <div className="pomodoro__start__container">
+                                    <span>
+                                       {pomodoroDuration}:{seconds}
+                                    </span>
+                                </div> :
 
-                            </div>
+                                <form className='pomodoro__form' onSubmit={handleSubmit}>
+                                    <div className="form-control">
+                                        <div className="form-group">
+                                            <label>Pomodoro duration</label>
+                                            <input
+                                                type="number"
+                                                min={2}
+                                                max={60}
+                                                step={5}
+                                                name='pomodoro-time'
+                                                value={pomodoroDuration}
+                                                onChange={(e) => setPomodorDuration(Number(e.target.value))}
+                                            />
+                                        </div>
+                                        <p>:</p>
+                                        <div className="form-group">
+                                            <label>Short break duration</label>
+                                            <input
+                                                type="number"
+                                                min={10}
+                                                max={30}
+                                                step={5}
+                                                name='break-time'
+                                                value={shortBreakDuration}
+                                                onChange={(e) => setShortBreakDuration(e.target.value)}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Long break duration</label>
+                                            <input
+                                                type="number"
+                                                min={10}
+                                                max={30}
+                                                step={5}
+                                                name='break-time'
+                                                value={longBreakDuration}
+                                                onChange={(e) => setLongBreakDuration(e.target.value)}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Number of rounds</label>
+                                            <input type="number" min={1} max={5} step={1} name='break-time' />
+                                        </div>
+
+                                    </div>
+
+
+                                    <input type="submit" name="Start" id="start-pomodoro-button" value="Start" />
+
+                                </form>
+
                         }
 
                         <div className="message">
