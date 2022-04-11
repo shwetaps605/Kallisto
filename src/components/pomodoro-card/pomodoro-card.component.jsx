@@ -3,7 +3,7 @@ import './pomodoro-card.styles.scss'
 
 const PomodoroCard = (props) => {
 
-    const [pomodoroDuration, setPomodorDuration] = useState(0)
+    let [pomodoroDuration, setPomodorDuration] = useState(0)
     const [shortBreakDuration, setShortBreakDuration] = useState(0)
     const [longBreakDuration, setLongBreakDuration] = useState(0)
     const [rounds, setRounds] = useState(0)
@@ -17,12 +17,14 @@ const PomodoroCard = (props) => {
         e.preventDefault()
         setStartPomodoro(true)
         console.log(typeof(pomodoroDuration))
-        while(pomodoroDuration > 0){
+        let pomoTime = pomodoroDuration
+        while( pomoTime > 0){
             console.log("TIMER WHILE LOOP")
             setInterval( () => {
                 setSeconds(seconds-1)
                 if(seconds === 0 ){
                     setPomodorDuration(pomodoroDuration-1)
+                    pomoTime = pomoTime - 1
                 }
             },1000)
         }
