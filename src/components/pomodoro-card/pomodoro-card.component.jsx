@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './pomodoro-card.styles.scss'
 
 const PomodoroCard = (props) => {
@@ -9,28 +9,24 @@ const PomodoroCard = (props) => {
     const [rounds, setRounds] = useState(0)
     const [toggleShowFields, setToggleShowFields] = useState(true)
     const [startPomodoro, setStartPomodoro] = useState(false)
-    const [seconds, setSeconds] = useState(59)
+    const [seconds, setSeconds] = useState(0)
+
+    useEffect(() => {
+        setInterval(() => {
+            setSeconds(seconds - 1)
+            if (seconds === 0) {
+                setPomodorDuration(pomodoroDuration - 1)
+                pomoTime = pomoTime - 1
+            }
+        }, 1000)
+
+    }, [seconds])
 
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setStartPomodoro(true)
-        console.log(typeof(pomodoroDuration))
-        let pomoTime = pomodoroDuration
-        while( pomoTime > 0){
-            console.log("TIMER WHILE LOOP")
-            setInterval( () => {
-                setSeconds(seconds-1)
-                if(seconds === 0 ){
-                    setPomodorDuration(pomodoroDuration-1)
-                    pomoTime = pomoTime - 1
-                }
-            },1000)
-        }
-        
-        
-
+        setSeconds(59)
     }
 
     return (
@@ -58,7 +54,7 @@ const PomodoroCard = (props) => {
                             startPomodoro ?
                                 <div className="pomodoro__start__container">
                                     <span>
-                                       {pomodoroDuration}:{seconds}
+                                        {pomodoroDuration}:{seconds}
                                     </span>
                                 </div> :
 
