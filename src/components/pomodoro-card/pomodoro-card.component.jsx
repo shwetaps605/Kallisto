@@ -1,32 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './pomodoro-card.styles.scss'
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const PomodoroCard = (props) => {
 
-    let [pomodoroDuration, setPomodorDuration] = useState(0)
+    const [pomodoroDuration, setPomodorDuration] = useState(0)
     const [shortBreakDuration, setShortBreakDuration] = useState(0)
     const [longBreakDuration, setLongBreakDuration] = useState(0)
-    const [rounds, setRounds] = useState(0)
     const [toggleShowFields, setToggleShowFields] = useState(true)
-    const [startPomodoro, setStartPomodoro] = useState(false)
+    const [startPomodoro, setStartPomodoro] = useState(true)
     const [seconds, setSeconds] = useState(0)
+    const [mode, setMode] = useState('work')
 
-    useEffect(() => {
-        setInterval(() => {
-            setSeconds(seconds - 1)
-            if (seconds === 0) {
-                setPomodorDuration(pomodoroDuration - 1)
-                pomoTime = pomoTime - 1
-            }
-        }, 1000)
+    const modeRef = useRef(mode)
+    const secondsRef = useRef(seconds)
+    
 
-    }, [seconds])
+    const initTimer = () => {
+        setStartPomodoro(true)
+        setSeconds(pomodoroDuration * 60)
+    }
 
+    const switchMode = () => {
+        const nextMode = mode === 'work' ? 'work' : 'break'
+        const nextSeconds = (nextMode === 'work' ? setSeconds(pomodoroDuration * 60) : setSeconds(shortBreakDuration * 60))
+        console.log(nextMode, nextSeconds)
+        setMode(nextMode)
+        setSeconds(nextSeconds)
+    }
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setSeconds(59)
+        initTimer()
+
     }
 
     return (
@@ -53,9 +61,16 @@ const PomodoroCard = (props) => {
                         {
                             startPomodoro ?
                                 <div className="pomodoro__start__container">
-                                    <span>
-                                        {pomodoroDuration}:{seconds}
-                                    </span>
+                                    <CircularProgressbar
+                                        value={60}
+                                        text={'60'}
+                                        styles={buildStyles({
+
+                                            pathColor: '#3f3f3f',
+                                            textColor: '#fff',
+                                            trailColor: '#d6d6d6',
+                                        })}
+                                    />
                                 </div> :
 
                                 <form className='pomodoro__form' onSubmit={handleSubmit}>
@@ -82,7 +97,7 @@ const PomodoroCard = (props) => {
                                                 step={5}
                                                 name='break-time'
                                                 value={shortBreakDuration}
-                                                onChange={(e) => setShortBreakDuration(e.target.value)}
+                                                onChange={(e) => setShortBreakDuration(Number(e.target.value))}
                                             />
                                         </div>
                                         <div className="form-group">
@@ -94,7 +109,7 @@ const PomodoroCard = (props) => {
                                                 step={5}
                                                 name='break-time'
                                                 value={longBreakDuration}
-                                                onChange={(e) => setLongBreakDuration(e.target.value)}
+                                                onChange={(e) => setLongBreakDuration(Number(e.target.value))}
                                             />
                                         </div>
                                         <div className="form-group">
