@@ -8,7 +8,6 @@ import Modal from './components/modal/modal.component';
 import AddTaskCard from './components/add-task/add-task-card.component'
 import PomodoroCard from './components/pomodoro-card/pomodoro-card.component';
 import TaskProgressCard from './components/task-card/task-card.component';
-import { useTasks } from './contexts/TaskContexts';
 import './App.css'
 
 function App() {

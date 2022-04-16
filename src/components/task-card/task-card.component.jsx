@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { useTasks } from '../../contexts/TaskContexts'
+import { useTasks } from '../../contexts/TaskContext'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './task-card.styles.scss'

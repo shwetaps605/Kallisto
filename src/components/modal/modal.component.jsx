@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 import './modal.styles.scss'
-import { useTasks } from "../../contexts/TaskContexts"
+import { useTasks } from "../../contexts/TaskContext"
 
 const Modal = () => {
 

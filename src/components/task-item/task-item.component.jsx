@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import './task-item.styles.scss'
-import { useTasks } from "../../contexts/TaskContexts"
+import { useTasks } from "../../contexts/TaskContext"
 import Checkbox from "../checkbox/checkbox.component"
 
 const TaskItem = ({ task, handleAddSubtask }) => {
