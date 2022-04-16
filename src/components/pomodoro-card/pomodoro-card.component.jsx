@@ -19,13 +19,17 @@ const PomodoroCard = (props) => {
     const secondsRef = useRef(seconds)
 
 
-    // useEffect(() => {
-    //     mode === 'work' ? setSeconds(pomodoroDuration * 60) : setSeconds(shortBreakDuration * 60)
-    //     // setSeconds(duration)
-    //     console.log("USEEFFECT", seconds)
+    useEffect(() => {
+        
+        console.log("pomodoro", pomodoroDuration)
+        const duration = pomodoroDuration * 60
+        setSeconds(pomodoroDuration * 60)
+        secondsRef.current = seconds
+        console.log("Duration", duration)
+        console.log("values are", seconds, secondsRef.current);
         
 
-    // }, [pomodoroDuration])
+    }, [pomodoroDuration])
 
 
     function GetSeconds() {
@@ -35,7 +39,7 @@ const PomodoroCard = (props) => {
     }
 
     function startTimer() {
-        console.log("SECONDS", seconds)
+        console.log("SECONDS", seconds, secondsRef.current)
     }
 
 
@@ -98,7 +102,7 @@ const PomodoroCard = (props) => {
                                                 value={pomodoroDuration}
                                                 onChange={(e) => {
                                                     setPomodorDuration(Number(e.target.value))
-                                                    GetSeconds()
+                                                    
                                                 }}
                                             />
                                         </div>
@@ -114,7 +118,7 @@ const PomodoroCard = (props) => {
                                                 value={shortBreakDuration}
                                                 onChange={(e) => {
                                                     setShortBreakDuration(Number(e.target.value))
-                                                    GetSeconds()
+                                                   
                                                 }}
                                             />
                                         </div>
