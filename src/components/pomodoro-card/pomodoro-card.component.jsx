@@ -11,7 +11,7 @@ const PomodoroCard = (props) => {
     const [startPomodoro, setStartPomodoro] = useState(false)
 
 
-    const [seconds, setSeconds] = useState(0)
+    let [seconds, setSeconds] = useState(0)
     const [mode, setMode] = useState('work')
     const [percentage, setPercentage] = useState(0)
 
@@ -20,15 +20,10 @@ const PomodoroCard = (props) => {
 
 
     useEffect(() => {
-        
         console.log("pomodoro", pomodoroDuration)
         const duration = pomodoroDuration * 60
-        setSeconds(pomodoroDuration * 60)
-        secondsRef.current = seconds
-        console.log("Duration", duration)
-        console.log("values are", seconds, secondsRef.current);
-        
-
+        secondsRef.current = duration
+        setSeconds(secondsRef.current)
     }, [pomodoroDuration])
 
 
@@ -39,15 +34,10 @@ const PomodoroCard = (props) => {
     }
 
     function startTimer() {
+        console.log("previous", secondsRef.current);
         console.log("SECONDS", seconds, secondsRef.current)
+        setStartPomodoro(true)
     }
-
-
-
-
-
-
-
 
 
     return (
@@ -78,8 +68,8 @@ const PomodoroCard = (props) => {
                             startPomodoro ?
                                 <div className="pomodoro__start__container">
                                     <CircularProgressbar
-                                        value={percentage}
-                                        text={percentage}
+                                        value={seconds}
+                                        text={seconds}
                                         styles={buildStyles({
 
                                             pathColor: '#3f3f3f',
