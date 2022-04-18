@@ -27,15 +27,14 @@ const PomodoroCard = (props) => {
     }, [pomodoroDuration, shortBreakDuration])
 
 
-    function GetSeconds() {
-        mode === 'work' ? setSeconds(pomodoroDuration * 60) : setSeconds(shortBreakDuration * 60)
-        // // setSeconds(duration)
-        console.log("Seconds left", seconds)
+    function tick() {
+        secondsRef.current = secondsRef.current - 1
+        setSeconds(secondsRef.current)
     }
 
     function startTimer() {
-        console.log("previous", secondsRef.current);
-        console.log("SECONDS", seconds, secondsRef.current)
+        // console.log("previous", secondsRef.current);
+        // console.log("SECONDS", seconds, secondsRef.current)
         setStartPomodoro(true)
     }
 
