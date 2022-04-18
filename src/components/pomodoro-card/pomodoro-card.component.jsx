@@ -12,7 +12,7 @@ const PomodoroCard = (props) => {
 
 
     let [seconds, setSeconds] = useState(0)
-    const [mode, setMode] = useState('work')
+    const [mode, setMode] = useState('break')
     const [percentage, setPercentage] = useState(0)
 
     const modeRef = useRef(mode)
@@ -21,10 +21,10 @@ const PomodoroCard = (props) => {
 
     useEffect(() => {
         console.log("pomodoro", pomodoroDuration)
-        const duration = pomodoroDuration * 60
+        const duration = (mode === 'work' ? pomodoroDuration: shortBreakDuration) * 60
         secondsRef.current = duration
         setSeconds(secondsRef.current)
-    }, [pomodoroDuration])
+    }, [pomodoroDuration, shortBreakDuration])
 
 
     function GetSeconds() {
@@ -69,7 +69,7 @@ const PomodoroCard = (props) => {
                                 <div className="pomodoro__start__container">
                                     <CircularProgressbar
                                         value={seconds}
-                                        text={seconds}
+                                        text={seconds }
                                         styles={buildStyles({
 
                                             pathColor: '#3f3f3f',
