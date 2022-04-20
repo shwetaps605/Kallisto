@@ -18,13 +18,13 @@ function App() {
     const [advice, setAdvice] = useState("")
 
     useEffect(() => {
-        fetchData()
+        // fetchData()
     }, [lat, long])
 
 
 
     useEffect(() => {
-        fetchAdvice()
+        // fetchAdvice()
     }, [])
 
 

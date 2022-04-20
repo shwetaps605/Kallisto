@@ -127,5 +127,21 @@ input[type=number]::-webkit-outer-spin-button {
 
             
         }
+
+        .timer__container {
+            max-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            flex-direction: column;
+            background-color: #d34f70;
+
+            .buttons {
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                margin-top: 2em;
+            }
+        }
     }
 }

@@ -108,7 +108,7 @@ const PomodoroCard = (props) => {
 
                         {
                             startPomodoro ?
-                                <div className="pomodoro__start__container">
+                                <div className="timer__container">
                                     <p>{mode}</p>
                                     <CircularProgressbar
                                         value={percentage}
@@ -119,6 +119,14 @@ const PomodoroCard = (props) => {
                                             trailColor: '#d6d6d6',
                                         })}
                                     />
+                                    <div className="buttons">
+                                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                                            <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
+                                        </svg>
+                                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                                            <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
+                                        </svg>
+                                    </div>
                                 </div> :
 
                                 <form className='pomodoro__form' >
