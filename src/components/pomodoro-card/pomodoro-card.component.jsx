@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import './pomodoro-card.styles.scss'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { validate } from 'uuid';
 
 const PomodoroCard = (props) => {
 
@@ -21,7 +22,7 @@ const PomodoroCard = (props) => {
 
     useEffect(() => {
         console.log("pomodoro", pomodoroDuration)
-        const duration = (mode === 'work' ? pomodoroDuration: shortBreakDuration) * 60
+        const duration = (mode === 'work' ? pomodoroDuration : shortBreakDuration) * 60
         secondsRef.current = duration
         setSeconds(secondsRef.current)
     }, [pomodoroDuration, shortBreakDuration])
@@ -32,10 +33,42 @@ const PomodoroCard = (props) => {
         setSeconds(secondsRef.current)
     }
 
+    function switchMode() {
+        const nextMode = modeRef.current === 'work' ? 'break' : 'work'
+        const nextSeconds = (nextMode === 'work' ? pomodoroDuration : shortBreakDuration) * 60
+        setMode(nextMode)
+        modeRef.current = nextMode
+        setSeconds(nextSeconds)
+        secondsRef.current = nextSeconds
+    }
+
+    function validateInputs() {
+        if (pomodoroDuration === 0 || shortBreakDuration === 0)
+            return false
+        return true
+    }
+
     function startTimer() {
         // console.log("previous", secondsRef.current);
         // console.log("SECONDS", seconds, secondsRef.current)
+        const validated = validateInputs()
+
+        if (!validated) {
+            alert('must provide values for work and break duration')
+            return
+
+        }
+
         setStartPomodoro(true)
+        const interval = setInterval(() => {
+            if (secondsRef.current === 0) return switchMode()
+            tick();
+        }, 100)
+
+        return () => {
+            clearInterval(interval)
+
+        }
     }
 
 
@@ -66,9 +99,10 @@ const PomodoroCard = (props) => {
                         {
                             startPomodoro ?
                                 <div className="pomodoro__start__container">
+                                    <p>{mode}</p>
                                     <CircularProgressbar
                                         value={seconds}
-                                        text={seconds }
+                                        text={seconds}
                                         styles={buildStyles({
 
                                             pathColor: '#3f3f3f',
@@ -91,8 +125,9 @@ const PomodoroCard = (props) => {
                                                 value={pomodoroDuration}
                                                 onChange={(e) => {
                                                     setPomodorDuration(Number(e.target.value))
-                                                    
+
                                                 }}
+                                                required
                                             />
                                         </div>
                                         <p>:</p>
@@ -107,8 +142,8 @@ const PomodoroCard = (props) => {
                                                 value={shortBreakDuration}
                                                 onChange={(e) => {
                                                     setShortBreakDuration(Number(e.target.value))
-                                                   
                                                 }}
+                                                required
                                             />
                                         </div>
                                         {/* <div className="form-group">
