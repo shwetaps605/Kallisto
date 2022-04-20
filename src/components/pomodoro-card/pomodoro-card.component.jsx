@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react'
 import './pomodoro-card.styles.scss'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { validate } from 'uuid';
 
 const PomodoroCard = (props) => {
 
@@ -13,11 +12,13 @@ const PomodoroCard = (props) => {
 
 
     let [seconds, setSeconds] = useState(0)
-    const [mode, setMode] = useState('break')
-    const [percentage, setPercentage] = useState(0)
+    const [mode, setMode] = useState('work')
 
     const modeRef = useRef(mode)
     const secondsRef = useRef(seconds)
+
+    const red = '#f54e4e';
+    const green = '#4aec8c';
 
 
     useEffect(() => {
@@ -71,6 +72,15 @@ const PomodoroCard = (props) => {
         }
     }
 
+    const totalSeconds = mode === 'work'
+        ? pomodoroDuration * 60
+        : shortBreakDuration * 60
+    const percentage = Math.round(seconds / totalSeconds * 100)
+
+    const minutes = Math.floor(seconds / 60)
+    let secondsLeft = seconds % 60
+    if (secondsLeft < 10) secondsLeft = '0' + secondsLeft
+
 
     return (
         <div className="pomodoro__card__container">
@@ -101,11 +111,10 @@ const PomodoroCard = (props) => {
                                 <div className="pomodoro__start__container">
                                     <p>{mode}</p>
                                     <CircularProgressbar
-                                        value={seconds}
-                                        text={seconds}
+                                        value={percentage}
+                                        text={minutes + ':' + secondsLeft}
                                         styles={buildStyles({
-
-                                            pathColor: '#3f3f3f',
+                                            pathColor: mode === 'work' ? red : green,
                                             textColor: '#fff',
                                             trailColor: '#d6d6d6',
                                         })}
