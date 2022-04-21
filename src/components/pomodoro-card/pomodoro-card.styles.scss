@@ -129,23 +129,25 @@ input[type=number]::-webkit-outer-spin-button {
         }
 
         .timer__container {
-            max-height: 200px;
+            max-height: 400px;
             display: flex;
-            justify-content: center;
-            align-self: center;
+            justify-content: space-around;
+            align-items: center;
             flex-direction: column;
             background-color: #d34f70;
 
-            .buttons {
-                display: flex;
-                justify-content:center;
-                align-items: center;
-                margin-top: 2em;
+            .timer{
+                display: block;
+
+            }
+
+            
 
                 svg{
+                    // margin-top: 2em;
                     cursor: pointer;
                 }
-            }
+            
         }
     }
 }

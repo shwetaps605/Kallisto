@@ -31,6 +31,11 @@ const PomodoroCard = (props) => {
         setSeconds(secondsRef.current)
     }, [pomodoroDuration, shortBreakDuration])
 
+    // useEffect(()=>{
+    //     isPausedRef.current = isPaused
+    //     if(isPausedRef.current){}
+    // },[isPaused])
+
 
     function tick() {
         secondsRef.current = secondsRef.current - 1
@@ -68,7 +73,7 @@ const PomodoroCard = (props) => {
 
         }
 
-        if (isPausedRef.current) {
+        if (isPaused) {
             console.log("TIMER IS PAUSED")
             return
 
@@ -123,30 +128,37 @@ const PomodoroCard = (props) => {
                         {
                             startPomodoro ?
                                 <div className="timer__container">
-                                    <p>{mode}</p>
+                                    <p>{mode === 'work' ? "Stay focused!" : "Take a break!"}</p>
+                                    {/* <div className="timer">
+                                        <CircularProgressbar
+                                            value={percentage}
+                                            text={minutes + ':' + secondsLeft}
+                                            styles={buildStyles({
+                                                pathColor: mode === 'work' ? red : green,
+                                                textColor: '#fff',
+                                                trailColor: '#d6d6d6',
+                                            })}
+                                        />
+                                    </div> */}
                                     <CircularProgressbar
-                                        value={percentage}
-                                        text={minutes + ':' + secondsLeft}
-                                        styles={buildStyles({
-                                            pathColor: mode === 'work' ? red : green,
-                                            textColor: '#fff',
-                                            trailColor: '#d6d6d6',
-                                        })}
-                                    />
+                                            value={percentage}
+                                            text={minutes + ':' + secondsLeft}
+                                            styles={buildStyles({
+                                                pathColor: mode === 'work' ? red : green,
+                                                textColor: '#fff',
+                                                trailColor: '#d6d6d6',
+                                            })}
+                                        />
 
-                                    <div className="buttons">
-                                        {
-                                            isPaused ?
-                                                <svg onClick={() => setIsPaused(false)} width="40" height="40" xmlns="http://www.w3.org/2000/svg" filRule="evenodd" clipRule="evenodd" fill='#fff'>
-                                                    <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
-                                                </svg> :
-                                                <svg className='' onClick={() => setIsPaused(true)} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
-                                                    <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
-                                                </svg>
-                                        }
-
-
-                                    </div>
+                                    {
+                                        isPaused ?
+                                            <svg onClick={() => {setIsPaused(false); secondsRef.current = false}} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                                <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
+                                            </svg> :
+                                            <svg className='' onClick={() => {setIsPaused(true); secondsRef.current = true}} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                                <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
+                                            </svg>
+                                    }
                                 </div> :
 
                                 <form className='pomodoro__form' >
