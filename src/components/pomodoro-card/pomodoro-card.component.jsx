@@ -9,13 +9,16 @@ const PomodoroCard = (props) => {
     const [shortBreakDuration, setShortBreakDuration] = useState(0)
     const [toggleShowFields, setToggleShowFields] = useState(true)
     const [startPomodoro, setStartPomodoro] = useState(false)
+    const [isPaused, setIsPaused] = useState(false)
 
 
     let [seconds, setSeconds] = useState(0)
     const [mode, setMode] = useState('work')
 
+
     const modeRef = useRef(mode)
     const secondsRef = useRef(seconds)
+    const isPausedRef = useRef(isPaused)
 
     const red = '#f54e4e';
     const green = '#4aec8c';
@@ -43,6 +46,11 @@ const PomodoroCard = (props) => {
         secondsRef.current = nextSeconds
     }
 
+    function pauseTimer() {
+        setIsPaused(true)
+        isPausedRef.current = isPaused
+    }
+
     function validateInputs() {
         if (pomodoroDuration === 0 || shortBreakDuration === 0)
             return false
@@ -59,6 +67,9 @@ const PomodoroCard = (props) => {
             return
 
         }
+
+        if (isPausedRef.current)
+            return
 
         setStartPomodoro(true)
         const interval = setInterval(() => {
