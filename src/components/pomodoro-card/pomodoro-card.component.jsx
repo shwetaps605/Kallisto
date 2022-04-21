@@ -68,8 +68,11 @@ const PomodoroCard = (props) => {
 
         }
 
-        if (isPausedRef.current)
+        if (isPausedRef.current) {
+            console.log("TIMER IS PAUSED")
             return
+
+        }
 
         setStartPomodoro(true)
         const interval = setInterval(() => {
@@ -113,7 +116,7 @@ const PomodoroCard = (props) => {
                             setStartPomodoro(false)
                         }}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.117 12L9.644 5.765L9 5L0 12.521L9 20L9.645 19.236L2.116 13H24V12H2.117Z" />
+                                <path fillRule="evenodd" clipRule="evenodd" d="M2.117 12L9.644 5.765L9 5L0 12.521L9 20L9.645 19.236L2.116 13H24V12H2.117Z" />
                             </svg>
                         </button>
 
@@ -130,13 +133,19 @@ const PomodoroCard = (props) => {
                                             trailColor: '#d6d6d6',
                                         })}
                                     />
+
                                     <div className="buttons">
-                                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                                            <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
-                                        </svg>
-                                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                                            <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
-                                        </svg>
+                                        {
+                                            isPaused ?
+                                                <svg onClick={() => setIsPaused(false)} width="40" height="40" xmlns="http://www.w3.org/2000/svg" filRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                                    <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
+                                                </svg> :
+                                                <svg className='' onClick={() => setIsPaused(true)} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                                    <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
+                                                </svg>
+                                        }
+
+
                                     </div>
                                 </div> :
 

@@ -50,7 +50,7 @@ const TaskItem = ({ task, handleAddSubtask }) => {
             <div className="task__item__content">
                 {
                     task.subtasks.length > 0 && task.subtasks.map(subtask => (
-                        <div className="subtask" onDoubleClick={() => handleSubTaskDelete(task.taskId, subtask.subtaskId, subtask.subtaskCompletionStatus)}>
+                        <div key={subtask.subtaskId} className="subtask" onDoubleClick={() => handleSubTaskDelete(task.taskId, subtask.subtaskId, subtask.subtaskCompletionStatus)}>
                             {
                                 subtask.subtaskCompletionStatus ?
                                     <strike><p className="subtitle__text striked">{subtask.subtaskTitle}</p></strike> :
