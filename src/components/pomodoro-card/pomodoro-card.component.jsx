@@ -32,8 +32,9 @@ const PomodoroCard = (props) => {
     }, [pomodoroDuration, shortBreakDuration])
 
     // useEffect(()=>{
-    //     isPausedRef.current = isPaused
-    //     if(isPausedRef.current){}
+    //     if(isPausedRef.current){
+    //         stopTimer()
+    //     }
     // },[isPaused])
 
 
@@ -63,24 +64,22 @@ const PomodoroCard = (props) => {
     }
 
     function startTimer() {
-        // console.log("previous", secondsRef.current);
-        // console.log("SECONDS", seconds, secondsRef.current)
+       
         const validated = validateInputs()
 
         if (!validated) {
             alert('must provide values for work and break duration')
             return
-
-        }
-
-        if (isPaused) {
-            console.log("TIMER IS PAUSED")
-            return
-
         }
 
         setStartPomodoro(true)
         const interval = setInterval(() => {
+
+            if (isPausedRef.current) {
+                console.log("TIMER IS PAUSED")
+                return
+            }
+
             if (secondsRef.current === 0) return switchMode()
             tick();
         }, 100)
@@ -152,10 +151,10 @@ const PomodoroCard = (props) => {
 
                                     {
                                         isPaused ?
-                                            <svg onClick={() => {setIsPaused(false); secondsRef.current = false}} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                            <svg className='play-button'onClick={() => {setIsPaused(false); isPausedRef.current = false; }} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
                                                 <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
                                             </svg> :
-                                            <svg className='' onClick={() => {setIsPaused(true); secondsRef.current = true}} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                            <svg className='pause-button' onClick={() => {setIsPaused(true); isPausedRef.current = true; }} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
                                                 <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
                                             </svg>
                                     }
