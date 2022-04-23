@@ -18,8 +18,8 @@ const PomodoroCard = (props) => {
     const secondsRef = useRef(seconds)
     const isPausedRef = useRef(isPaused)
 
-    const red = '#f54e4e';
-    const green = '#4aec8c';
+    const red = 'rgb(172, 57, 115)';
+    const green = 'rgb(142, 236, 108)';
 
 
     useEffect(() => {
@@ -62,7 +62,7 @@ const PomodoroCard = (props) => {
             }
             if (secondsRef.current === 0) return switchMode()
             tick();
-        }, 100)
+        }, 1000)
 
         return () => {
             clearInterval(interval)
@@ -105,8 +105,11 @@ const PomodoroCard = (props) => {
                         {
                             startPomodoro ?
                                 <div className="timer__container">
-                                    <p>{mode === 'work' ? "Stay focused!" : "Take a break!"}</p>
-                                    <div className="timer">
+                                    <p className='timer_message'>{mode === 'work' ? "Stay focused!" : "Take a break!"}</p>
+                                    <div
+                                        className="timer"
+                                        onClick={() => { setIsPaused(!isPaused); isPausedRef.current = !isPausedRef.current; }}
+                                    >
                                         <CircularProgressbar
                                             value={percentage}
                                             text={minutes + ':' + secondsLeft}
@@ -114,18 +117,20 @@ const PomodoroCard = (props) => {
                                                 pathColor: mode === 'work' ? red : green,
                                                 textColor: '#fff',
                                                 trailColor: '#d6d6d6',
+                                                backgroundColor:'#333'
                                             })}
                                         />
-                                    </div>
-                                    {
+                                        {/* {
                                         isPaused ?
-                                            <svg className='play-button' onClick={() => { setIsPaused(false); isPausedRef.current = false; }} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                            <svg className='play-button' width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
                                                 <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
                                             </svg> :
-                                            <svg className='pause-button' onClick={() => { setIsPaused(true); isPausedRef.current = true; }} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                            <svg className='pause-button' width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
                                                 <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
                                             </svg>
-                                    }
+                                    } */}
+                                    </div>
+                                    
                                 </div> :
 
                                 <form className='pomodoro__form' >
