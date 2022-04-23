@@ -31,12 +31,6 @@ const PomodoroCard = (props) => {
         setSeconds(secondsRef.current)
     }, [pomodoroDuration, shortBreakDuration])
 
-    // useEffect(()=>{
-    //     if(isPausedRef.current){
-    //         stopTimer()
-    //     }
-    // },[isPaused])
-
 
     function tick() {
         secondsRef.current = secondsRef.current - 1
@@ -52,11 +46,6 @@ const PomodoroCard = (props) => {
         secondsRef.current = nextSeconds
     }
 
-    function pauseTimer() {
-        setIsPaused(true)
-        isPausedRef.current = isPaused
-    }
-
     function validateInputs() {
         if (pomodoroDuration === 0 || shortBreakDuration === 0)
             return false
@@ -64,22 +53,16 @@ const PomodoroCard = (props) => {
     }
 
     function startTimer() {
-       
         const validated = validateInputs()
-
         if (!validated) {
             alert('must provide values for work and break duration')
             return
         }
-
         setStartPomodoro(true)
         const interval = setInterval(() => {
-
             if (isPausedRef.current) {
-                console.log("TIMER IS PAUSED")
                 return
             }
-
             if (secondsRef.current === 0) return switchMode()
             tick();
         }, 100)
@@ -98,7 +81,6 @@ const PomodoroCard = (props) => {
     const minutes = Math.floor(seconds / 60)
     let secondsLeft = seconds % 60
     if (secondsLeft < 10) secondsLeft = '0' + secondsLeft
-
 
     return (
         <div className="pomodoro__card__container">
@@ -128,7 +110,7 @@ const PomodoroCard = (props) => {
                             startPomodoro ?
                                 <div className="timer__container">
                                     <p>{mode === 'work' ? "Stay focused!" : "Take a break!"}</p>
-                                    {/* <div className="timer">
+                                    <div className="timer">
                                         <CircularProgressbar
                                             value={percentage}
                                             text={minutes + ':' + secondsLeft}
@@ -138,23 +120,13 @@ const PomodoroCard = (props) => {
                                                 trailColor: '#d6d6d6',
                                             })}
                                         />
-                                    </div> */}
-                                    <CircularProgressbar
-                                            value={percentage}
-                                            text={minutes + ':' + secondsLeft}
-                                            styles={buildStyles({
-                                                pathColor: mode === 'work' ? red : green,
-                                                textColor: '#fff',
-                                                trailColor: '#d6d6d6',
-                                            })}
-                                        />
-
+                                    </div>
                                     {
                                         isPaused ?
-                                            <svg className='play-button'onClick={() => {setIsPaused(false); isPausedRef.current = false; }} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                            <svg className='play-button' onClick={() => { setIsPaused(false); isPausedRef.current = false; }} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
                                                 <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
                                             </svg> :
-                                            <svg className='pause-button' onClick={() => {setIsPaused(true); isPausedRef.current = true; }} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
+                                            <svg className='pause-button' onClick={() => { setIsPaused(true); isPausedRef.current = true; }} width="40" height="40" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" fill='#fff'>
                                                 <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
                                             </svg>
                                     }
@@ -194,34 +166,11 @@ const PomodoroCard = (props) => {
                                                 required
                                             />
                                         </div>
-                                        {/* <div className="form-group">
-                                            <label>Long break duration</label>
-                                            <input
-                                                type="number"
-                                                min={10}
-                                                max={30}
-                                                step={5}
-                                                name='break-time'
-                                                value={longBreakDuration}
-                                                onChange={(e) => setLongBreakDuration(Number(e.target.value))}
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>Number of rounds</label>
-                                            <input type="number" min={1} max={5} step={1} name='break-time' />
-                                        </div> */}
-
                                     </div>
 
                                     <button type='button' id="start-pomodoro-button" onClick={() => startTimer()}>Start</button>
-
-
-                                    {/* <input type="bu" name="Start"  value="Start" /> */}
-
                                 </form>
-
                         }
-
                         <div className="message">
 
                         </div>
