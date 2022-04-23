@@ -10,9 +10,7 @@ const PomodoroCard = (props) => {
     const [toggleShowFields, setToggleShowFields] = useState(true)
     const [startPomodoro, setStartPomodoro] = useState(false)
     const [isPaused, setIsPaused] = useState(false)
-
-
-    let [seconds, setSeconds] = useState(0)
+    const [seconds, setSeconds] = useState(0)
     const [mode, setMode] = useState('work')
 
 
@@ -25,7 +23,6 @@ const PomodoroCard = (props) => {
 
 
     useEffect(() => {
-        console.log("pomodoro", pomodoroDuration)
         const duration = (mode === 'work' ? pomodoroDuration : shortBreakDuration) * 60
         secondsRef.current = duration
         setSeconds(secondsRef.current)
@@ -69,7 +66,6 @@ const PomodoroCard = (props) => {
 
         return () => {
             clearInterval(interval)
-
         }
     }
 
@@ -145,7 +141,6 @@ const PomodoroCard = (props) => {
                                                 value={pomodoroDuration}
                                                 onChange={(e) => {
                                                     setPomodorDuration(Number(e.target.value))
-
                                                 }}
                                                 required
                                             />
