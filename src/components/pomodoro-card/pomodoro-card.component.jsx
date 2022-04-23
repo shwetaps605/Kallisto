@@ -18,8 +18,8 @@ const PomodoroCard = (props) => {
     const secondsRef = useRef(seconds)
     const isPausedRef = useRef(isPaused)
 
-    const red = 'rgb(172, 57, 115)';
-    const green = 'rgb(142, 236, 108)';
+    const workColor = 'rgb(172, 57, 115)';
+    const restColor = 'rgb(142, 236, 108)';
 
 
     useEffect(() => {
@@ -114,7 +114,7 @@ const PomodoroCard = (props) => {
                                             value={percentage}
                                             text={minutes + ':' + secondsLeft}
                                             styles={buildStyles({
-                                                pathColor: mode === 'work' ? red : green,
+                                                pathColor: mode === 'work' ? workColor: restColor,
                                                 textColor: '#fff',
                                                 trailColor: '#d6d6d6',
                                                 backgroundColor:'#333'
@@ -139,7 +139,7 @@ const PomodoroCard = (props) => {
                                             <label>Pomodoro duration</label>
                                             <input
                                                 type="number"
-                                                min={2}
+                                                min={10}
                                                 max={60}
                                                 step={5}
                                                 name='pomodoro-time'
@@ -155,7 +155,7 @@ const PomodoroCard = (props) => {
                                             <label>Break duration</label>
                                             <input
                                                 type="number"
-                                                min={2}
+                                                min={10}
                                                 max={30}
                                                 step={5}
                                                 name='break-time'

@@ -2,6 +2,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   background-color: thistle;
   margin: 1; 
+  opacity: 0.3;
 }
 
 .pomodoro__card__container {
@@ -109,7 +110,6 @@ input[type=number]::-webkit-outer-spin-button {
                         outline: none;
                         background-color: thistle;
                     }
-                
                 }
             }
 
@@ -124,8 +124,6 @@ input[type=number]::-webkit-outer-spin-button {
                 border-radius:15px;
                 border: 1px solid #fff;    
         }
-
-            
         }
 
         .timer__container {
@@ -143,8 +141,6 @@ input[type=number]::-webkit-outer-spin-button {
                 transform: translateY(55%);
                 transform: translateX(-5%);
             }
-
-            
 
             .timer{
                 cursor: pointer;

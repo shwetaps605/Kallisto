@@ -54,8 +54,6 @@ button {
             border-radius: 15px;
             transform: scaleX(1);
         }
-    
-
     }
 
     .add__task__card__body {
@@ -105,8 +103,7 @@ button {
                         option {
                             font-size: 1rem;
                         }
-                    }
-                    
+                    }  
                 }
 
                 #add-task-button {
@@ -120,10 +117,6 @@ button {
                     border-radius:15px;
                     border: 1px solid #fff;    
             }
-            
-    
         }
-
     }
-
 }
