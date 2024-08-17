@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './App.css'
 import WeatherCard from './components/weather-card/weather-card.component';
 import AdviceCard from './components/advice-card/advice-card.component';
 import TaskListCard from './components/task-list/task-list-card.component';
@@ -8,7 +7,7 @@ import Modal from './components/modal/modal.component';
 import AddTaskCard from './components/add-task/add-task-card.component'
 import PomodoroCard from './components/pomodoro-card/pomodoro-card.component';
 import TaskProgressCard from './components/task-card/task-card.component';
-import './App.css'
+import './App.scss'
 
 function App() {
 
@@ -54,23 +53,26 @@ function App() {
     }
 
     return (
-        <>
+        <div className='main'>
             <h2 id='title'>kallisto</h2>
-            {
+            {/* {
                 (typeof data.main != 'undefined') ?
                     (<WeatherCard weatherData={data} />) :
                     (<div></div>)
-            }
-            <AdviceCard adviceData={advice} />
-            <div className="cards">
+            } */}
+            {/* <AdviceCard adviceData={advice} /> */}
+            <div className="header">
                 <TaskProgressCard></TaskProgressCard>
-                <AddTaskCard></AddTaskCard>
-                <PomodoroCard />
+                <div className='cards'>
+                    <AddTaskCard></AddTaskCard>
+                    <PomodoroCard />
+                </div>
+                
             </div>
 
             <TaskListCard></TaskListCard>
             <Modal></Modal>
-        </>
+        </div>
     )
 }
 
