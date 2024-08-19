@@ -8,7 +8,7 @@ const AddTaskCard = (props) => {
 
     const titleRef = useRef()
     const priorityRef = useRef()
-    const [date, setDate] = useState("")
+    //const [date, setDate] = useState("")
     const [showAddFields, setShowAddFields] = useState(false)
     const { addTask } = useTasks()
 
@@ -16,11 +16,11 @@ const AddTaskCard = (props) => {
         e.preventDefault()
         setShowAddFields(false)
         console.log("date is", moment().format('LL'));
-        setDate(moment().format('LL'))
+        //setDate(moment().format('LL'))
         addTask({
             title: titleRef.current.value,
             priority: priorityRef.current.value,
-            date: date
+            date: moment().format('LL')
         })
         titleRef.current.value = ""
         priorityRef.current.value = "Low"
