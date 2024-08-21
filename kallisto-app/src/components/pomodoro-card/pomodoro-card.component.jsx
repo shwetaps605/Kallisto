@@ -7,7 +7,7 @@ const PomodoroCard = (props) => {
 
     const [pomodoroDuration, setPomodorDuration] = useState(0)
     const [shortBreakDuration, setShortBreakDuration] = useState(0)
-    const [toggleShowFields, setToggleShowFields] = useState(true)
+    const [toggleShowFields, setToggleShowFields] = useState(false)
     const [startPomodoro, setStartPomodoro] = useState(false)
     const [isPaused, setIsPaused] = useState(false)
     const [seconds, setSeconds] = useState(0)
